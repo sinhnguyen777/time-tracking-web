@@ -1,3 +1,31 @@
 {
-  "extends": ["next/core-web-vitals", "next/typescript"]
+  "extends": [
+    "prettier",
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended",
+    "next",
+    "next/core-web-vitals"
+  ],
+  "globals": {
+    "React": "readonly"
+  },
+  "overrides": [
+    {
+      "files": ["*.tsx"],
+      "rules": {
+        "react/prop-types": "off"
+      }
+    }
+  ],
+  "ignorePatterns": [".next/", "node_modules/"],
+  "rules": {
+    "@typescript-eslint/no-unused-vars": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "@next/next/no-img-element": "off",
+    "@typescript-eslint/no-namespace": "off",
+    "@next/next/next-script-for-ga": "off",
+    "import/no-anonymous-default-export": "off"
+  }
 }
