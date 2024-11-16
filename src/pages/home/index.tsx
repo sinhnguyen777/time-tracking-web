@@ -1,4 +1,4 @@
-import Calendar from "@/components/calendar";
+import AppCalendar from "@/components/calendar";
 import Layout from "@/components/layout";
 import Menu from "@/components/layout/menu";
 import TimeKeepingDetails from "@/components/popup/calendar-popup";
@@ -59,8 +59,8 @@ const Test = () => {
             </button>
           </div>
         </div>
-        <Calendar />
-        <TimeKeepingDetails />
+        <AppCalendar />
+        {/* <TimeKeepingDetails /> */}
       </div>
     </Layout>
   );

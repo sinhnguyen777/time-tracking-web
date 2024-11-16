@@ -1,5 +1,7 @@
-const Calendar = () => {
-  return <div>test</div>;
+import { Calendar } from "antd";
+
+const AppCalendar = () => {
+  return <Calendar />;
 };
 
-export default Calendar;
+export default AppCalendar;
