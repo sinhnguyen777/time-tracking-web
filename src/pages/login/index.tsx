@@ -2,20 +2,32 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Logo from "@/assets/images/favicon.png";
 
-const Login = () => {
-  const [showPassword, setShowPassword] = useState(false);
+interface UserCredentials {
+  username: string;
+  password: string;
+}
 
-  useEffect(() => {
-    const user_password_input =
-      document.querySelector<HTMLInputElement>("#password-input");
-    if (user_password_input) {
-      user_password_input.type = showPassword ? "text" : "password";
-    }
-  }, [showPassword]);
+const Login = () => {
+  const [credentials, setCredentials] = useState<UserCredentials>({
+    username: "",
+    password: "",
+  });
+  const [showPassword, setShowPassword] = useState(false);
+  const [passwordInputType, setPasswordInputType] = useState("password");
+
+  const GetCredentials = () => {
+    console.log(credentials);
+  };
 
   const ToggleShowPassword = () => {
+    if (passwordInputType === "password") {
+      setPasswordInputType("text");
+    } else {
+      setPasswordInputType("password");
+    }
     setShowPassword((prevShowPassword) => !prevShowPassword);
   };
+
   return (
     <div className="h-lvh flex justify-center items-center bg-sky-500">
       <div className=" size-fit bg-white p-8 rounded-lg [&>*]:my-4">
@@ -25,11 +37,24 @@ const Login = () => {
         <h1 className="font-bold text-2xl">
           Đăng nhập hệ thống quản lý chấm công
         </h1>
-        <form className="[&>div]:my-6">
+        <form
+          className="[&>div]:my-6"
+          onSubmit={(e) => {
+            e.preventDefault();
+            GetCredentials();
+          }}
+        >
           <div className="relative">
             <input
               type="text"
               id="user-input"
+              value={credentials.username}
+              onChange={(e) =>
+                setCredentials((prev) => ({
+                  ...prev,
+                  username: e.target.value,
+                }))
+              }
               className="peer outline-none border-b min-w-full py-2.5"
               required
             />
@@ -42,8 +67,15 @@ const Login = () => {
           </div>
           <div className="relative">
             <input
-              type="password"
+              type={passwordInputType}
               id="password-input"
+              value={credentials.password}
+              onChange={(e) =>
+                setCredentials((prev) => ({
+                  ...prev,
+                  password: e.target.value,
+                }))
+              }
               className="peer outline-none border-b min-w-full py-2.5"
               required
             />
