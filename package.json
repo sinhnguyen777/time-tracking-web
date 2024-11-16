@@ -17,7 +17,9 @@
     "prepare": "husky"
   },
   "dependencies": {
+    "@ant-design/cssinjs": "^1.22.0",
     "@reduxjs/toolkit": "^2.3.0",
+    "antd": "^5.22.1",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.2.1",
     "next": "15.0.2",
