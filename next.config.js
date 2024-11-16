@@ -1,13 +1,22 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
 /** @type {import('next').NextConfig} */
+const path = require("path");
 
 const nextConfig = {
-  /* config options here */
+  transpilePackages: ["rc-util", "@ant-design/icons-svg"],
   reactStrictMode: true,
   typescript: {
     ignoreBuildErrors: true,
   },
   eslint: {
-    ignoreDuringBuilds: true,
+    ignoreDuringBuilds: false,
+  },
+  webpack: (config) => {
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      "@components": path.resolve("components"),
+    };
+    return config;
   },
 };
 

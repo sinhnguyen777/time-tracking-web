@@ -1,4 +1,5 @@
 import React from "react";
+import { Layout, Menu, MenuProps, theme } from "antd";
 import {
   AppstoreOutlined,
   BarChartOutlined,
@@ -9,8 +10,6 @@ import {
   UserOutlined,
   VideoCameraOutlined,
 } from "@ant-design/icons";
-import type { MenuProps } from "antd";
-import { Layout, Menu, theme } from "antd";
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -40,7 +39,7 @@ const items: MenuProps["items"] = [
   label: `nav ${index + 1}`,
 }));
 
-const HomePage: React.FC = () => {
+const Dashboard: React.FC = () => {
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
@@ -80,4 +79,4 @@ const HomePage: React.FC = () => {
   );
 };
 
-export default HomePage;
+export default Dashboard;
