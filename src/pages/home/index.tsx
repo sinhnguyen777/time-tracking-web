@@ -60,7 +60,7 @@ const Test = () => {
           </div>
         </div>
         <Calendar />
-        <TimeKeepingDetails />
+        {/* <TimeKeepingDetails /> */}
       </div>
     </Layout>
   );
