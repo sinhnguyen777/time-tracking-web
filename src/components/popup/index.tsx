@@ -21,7 +21,11 @@ const Popup: React.FC<Props> = ({ children, title }) => {
                 stroke="currentColor"
                 className="size-6"
               >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M6 18 18 6M6 6l12 12"
+                />
               </svg>
             </button>
           </div>

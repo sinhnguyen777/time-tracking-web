@@ -10,19 +10,19 @@ interface Props {
 
 const layout = {
   wrapperCol: {
-    span: 28,
-  },
+    span: 28
+  }
 };
 const tailLayout = {
   wrapperCol: {
-    span: 28,
-  },
+    span: 28
+  }
 };
 
 const AccountPopup: React.FC<Props> = ({ title }) => {
   const [form] = Form.useForm();
 
-  const onFinish = (values: any) => {
+  const onFinish = (values: unknown) => {
     console.log(values);
   };
   const onReset = () => {
@@ -32,15 +32,21 @@ const AccountPopup: React.FC<Props> = ({ title }) => {
   return (
     <Popup title={title}>
       <div>
-        <Form {...layout} form={form} name="control-hooks" onFinish={onFinish} className="pt-6 px-10">
+        <Form
+          {...layout}
+          form={form}
+          name="control-hooks"
+          onFinish={onFinish}
+          className="pt-6 px-10"
+        >
           <div className="flex flex-wrap [&>*]:w-1/2 [&>*]:px-4">
             <Form.Item
               name="fullname"
               label="Họ và tên"
               rules={[
                 {
-                  required: true,
-                },
+                  required: true
+                }
               ]}
             >
               <Input placeholder="Nhập họ và tên nhân viên" />
@@ -50,8 +56,8 @@ const AccountPopup: React.FC<Props> = ({ title }) => {
               label="Mã nhân viên"
               rules={[
                 {
-                  required: true,
-                },
+                  required: true
+                }
               ]}
             >
               <Input placeholder="Nhập mã nhân viên" />
@@ -61,8 +67,8 @@ const AccountPopup: React.FC<Props> = ({ title }) => {
               label="Người tạo"
               rules={[
                 {
-                  required: true,
-                },
+                  required: true
+                }
               ]}
             >
               <Input disabled defaultValue="Lê Hoàng Vũ" />
@@ -72,8 +78,8 @@ const AccountPopup: React.FC<Props> = ({ title }) => {
               label="Vị trí"
               rules={[
                 {
-                  required: true,
-                },
+                  required: true
+                }
               ]}
             >
               <Select placeholder="Chọn vị trí" allowClear>
@@ -86,8 +92,8 @@ const AccountPopup: React.FC<Props> = ({ title }) => {
               label="Username"
               rules={[
                 {
-                  required: true,
-                },
+                  required: true
+                }
               ]}
             >
               <Input placeholder="Nhập Username" />
@@ -97,8 +103,8 @@ const AccountPopup: React.FC<Props> = ({ title }) => {
               label="Password"
               rules={[
                 {
-                  required: true,
-                },
+                  required: true
+                }
               ]}
             >
               <Password placeholder="Nhập Password" />
@@ -108,8 +114,8 @@ const AccountPopup: React.FC<Props> = ({ title }) => {
               label="Confirm Password"
               rules={[
                 {
-                  required: true,
-                },
+                  required: true
+                }
               ]}
             >
               <Password placeholder="Nhập lại Password" />

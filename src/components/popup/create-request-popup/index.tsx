@@ -11,13 +11,13 @@ interface Props {
 
 const layout = {
   wrapperCol: {
-    span: 28,
-  },
+    span: 28
+  }
 };
 const tailLayout = {
   wrapperCol: {
-    span: 28,
-  },
+    span: 28
+  }
 };
 
 const CreateRequestPopup: React.FC<Props> = ({ title, isFormEditable }) => {
@@ -35,7 +35,13 @@ const CreateRequestPopup: React.FC<Props> = ({ title, isFormEditable }) => {
   return (
     <Popup title={title}>
       <div>
-        <Form {...layout} form={form} name="control-hooks" onFinish={onFinish} className="pt-6 px-10">
+        <Form
+          {...layout}
+          form={form}
+          name="control-hooks"
+          onFinish={onFinish}
+          className="pt-6 px-10"
+        >
           <div className="flex flex-wrap [&>*]:w-1/2 [&>*]:px-4">
             {/* <Form.Item
                             name="fullname"
@@ -54,8 +60,8 @@ const CreateRequestPopup: React.FC<Props> = ({ title, isFormEditable }) => {
               rules={[
                 {
                   required: true,
-                  message: "Không được để trống loại đơn.",
-                },
+                  message: "Không được để trống loại đơn."
+                }
               ]}
             >
               <Select placeholder="Chọn loại đơn" allowClear>
@@ -72,8 +78,8 @@ const CreateRequestPopup: React.FC<Props> = ({ title, isFormEditable }) => {
               rules={[
                 {
                   required: true,
-                  message: "Không được để trống người duyệt.",
-                },
+                  message: "Không được để trống người duyệt."
+                }
               ]}
             >
               <Input placeholder="Chọn người duyệt" />
@@ -84,8 +90,8 @@ const CreateRequestPopup: React.FC<Props> = ({ title, isFormEditable }) => {
               rules={[
                 {
                   required: true,
-                  message: "Không được để trống người liên quan.",
-                },
+                  message: "Không được để trống người liên quan."
+                }
               ]}
             >
               <Input placeholder="Chọn người liên quan" />
@@ -96,8 +102,8 @@ const CreateRequestPopup: React.FC<Props> = ({ title, isFormEditable }) => {
               rules={[
                 {
                   required: true,
-                  message: "Không được để trống ngày.",
-                },
+                  message: "Không được để trống ngày."
+                }
               ]}
             >
               <DatePicker defaultValue={dayjs()} format={dateFormat} />
@@ -108,8 +114,8 @@ const CreateRequestPopup: React.FC<Props> = ({ title, isFormEditable }) => {
               rules={[
                 {
                   required: true,
-                  message: "Không được để trống ngày.",
-                },
+                  message: "Không được để trống ngày."
+                }
               ]}
             >
               <DatePicker defaultValue={dayjs()} format={dateFormat} />

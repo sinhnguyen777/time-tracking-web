@@ -3,21 +3,27 @@
 const path = require("path");
 
 const nextConfig = {
-  transpilePackages: ["rc-util", "@ant-design/icons-svg"],
+  transpilePackages: [
+    "rc-util",
+    "@ant-design/icons-svg",
+    "rc-pagination",
+    "rc-picker",
+    "rc-input"
+  ],
   reactStrictMode: true,
   typescript: {
-    ignoreBuildErrors: true,
+    ignoreBuildErrors: true
   },
   eslint: {
-    ignoreDuringBuilds: false,
+    ignoreDuringBuilds: false
   },
   webpack: (config) => {
     config.resolve.alias = {
       ...config.resolve.alias,
-      "@components": path.resolve("components"),
+      "@components": path.resolve("components")
     };
     return config;
-  },
+  }
 };
 
 module.exports = nextConfig;
