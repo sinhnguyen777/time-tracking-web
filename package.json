@@ -17,8 +17,8 @@
     "prepare": "husky"
   },
   "dependencies": {
-    "@ant-design/icons": "^5.5.1",
     "@ant-design/cssinjs": "^1.22.0",
+    "@ant-design/icons": "^5.5.1",
     "@reduxjs/toolkit": "^2.3.0",
     "antd": "^5.22.1",
     "eslint-config-prettier": "^9.1.0",
@@ -48,15 +48,10 @@
     "typescript": "^5"
   },
   "lint-staged": {
-    "*.ts": [
+    "*.{ts,tsx,js}": [
+      "eslint",
       "eslint --fix",
-      "prettier --write",
-      "git add"
-    ],
-    "*.tsx": [
-      "eslint --fix",
-      "prettier --write",
-      "git add"
+      "prettier --write"
     ]
   }
 }

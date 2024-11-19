@@ -1,4 +1,7 @@
-import { useInjectReducer as useReducer, useInjectSaga as useSaga } from "redux-injectors";
+import {
+  useInjectReducer as useReducer,
+  useInjectSaga as useSaga
+} from "redux-injectors";
 import { Saga } from "redux-saga";
 import { SagaInjectionModes } from "redux-injectors";
 import { Reducer, AnyAction } from "@reduxjs/toolkit";
@@ -24,7 +27,9 @@ export interface InjectSagaParams {
 }
 
 /* Wrap redux-injectors with stricter types */
-export function useInjectReducer<Key extends RootStateKeyType>(params: InjectReducerParams<Key>) {
+export function useInjectReducer<Key extends RootStateKeyType>(
+  params: InjectReducerParams<Key>
+) {
   return useReducer(params);
 }
 

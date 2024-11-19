@@ -4,7 +4,7 @@ import { reducer as globalReducer } from "./slice";
 function createReducer(injectedReducers = {}) {
   const rootReducers = {
     global: globalReducer,
-    ...injectedReducers,
+    ...injectedReducers
   };
 
   return combineReducers(rootReducers);

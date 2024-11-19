@@ -8,7 +8,7 @@ import {
   TeamOutlined,
   UploadOutlined,
   UserOutlined,
-  VideoCameraOutlined,
+  VideoCameraOutlined
 } from "@ant-design/icons";
 
 const { Header, Content, Footer, Sider } = Layout;
@@ -21,7 +21,7 @@ const siderStyle: React.CSSProperties = {
   top: 0,
   bottom: 0,
   scrollbarWidth: "thin",
-  scrollbarGutter: "stable",
+  scrollbarGutter: "stable"
 };
 
 const items: MenuProps["items"] = [
@@ -32,23 +32,28 @@ const items: MenuProps["items"] = [
   CloudOutlined,
   AppstoreOutlined,
   TeamOutlined,
-  ShopOutlined,
+  ShopOutlined
 ].map((icon, index) => ({
   key: String(index + 1),
   icon: React.createElement(icon),
-  label: `nav ${index + 1}`,
+  label: `nav ${index + 1}`
 }));
 
 const Dashboard: React.FC = () => {
   const {
-    token: { colorBgContainer, borderRadiusLG },
+    token: { colorBgContainer, borderRadiusLG }
   } = theme.useToken();
 
   return (
     <Layout hasSider>
       <Sider style={siderStyle}>
         <div className="demo-logo-vertical" />
-        <Menu theme="dark" mode="inline" defaultSelectedKeys={["4"]} items={items} />
+        <Menu
+          theme="dark"
+          mode="inline"
+          defaultSelectedKeys={["4"]}
+          items={items}
+        />
       </Sider>
       <Layout style={{ marginInlineStart: 200 }}>
         <Header style={{ padding: 0, background: colorBgContainer }} />
@@ -58,7 +63,7 @@ const Dashboard: React.FC = () => {
               padding: 24,
               textAlign: "center",
               background: colorBgContainer,
-              borderRadius: borderRadiusLG,
+              borderRadius: borderRadiusLG
             }}
           >
             <p>long content</p>
@@ -73,7 +78,9 @@ const Dashboard: React.FC = () => {
             }
           </div>
         </Content>
-        <Footer style={{ textAlign: "center" }}>Ant Design ©{new Date().getFullYear()} Created by Ant UED</Footer>
+        <Footer style={{ textAlign: "center" }}>
+          Ant Design ©{new Date().getFullYear()} Created by Ant UED
+        </Footer>
       </Layout>
     </Layout>
   );

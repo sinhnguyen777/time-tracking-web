@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { configureStore } from "@reduxjs/toolkit";
 import createSagaMiddleware from "redux-saga";
 import rootReducer from "./reducer";
@@ -17,15 +18,16 @@ const configureAppStore = () => {
   const enhancers = [
     createInjectorsEnhancer({
       createReducer: (injectedReducers) => rootReducer(injectedReducers),
-      runSaga,
-    }),
+      runSaga
+    })
   ];
 
   const store = configureStore({
     reducer: createReducer,
-    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(middlewares),
+    middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware().concat(middlewares),
     devTools: false,
-    enhancers: enhancers as any,
+    enhancers: enhancers as any
   });
 
   sagaMiddleware.run(rootSaga);
