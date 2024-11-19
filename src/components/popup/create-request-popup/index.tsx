@@ -11,13 +11,13 @@ interface Props {
 
 const layout = {
   wrapperCol: {
-    span: 28,
-  },
+    span: 28
+  }
 };
 const tailLayout = {
   wrapperCol: {
-    span: 28,
-  },
+    span: 28
+  }
 };
 
 const CreateRequestPopup: React.FC<Props> = ({ title, isFormEditable }) => {
@@ -60,8 +60,8 @@ const CreateRequestPopup: React.FC<Props> = ({ title, isFormEditable }) => {
               rules={[
                 {
                   required: true,
-                  message: "Không được để trống loại đơn.",
-                },
+                  message: "Không được để trống loại đơn."
+                }
               ]}
             >
               <Select placeholder="Chọn loại đơn" allowClear>
@@ -78,8 +78,8 @@ const CreateRequestPopup: React.FC<Props> = ({ title, isFormEditable }) => {
               rules={[
                 {
                   required: true,
-                  message: "Không được để trống người duyệt.",
-                },
+                  message: "Không được để trống người duyệt."
+                }
               ]}
             >
               <Input placeholder="Chọn người duyệt" />
@@ -90,8 +90,8 @@ const CreateRequestPopup: React.FC<Props> = ({ title, isFormEditable }) => {
               rules={[
                 {
                   required: true,
-                  message: "Không được để trống người liên quan.",
-                },
+                  message: "Không được để trống người liên quan."
+                }
               ]}
             >
               <Input placeholder="Chọn người liên quan" />
@@ -102,8 +102,8 @@ const CreateRequestPopup: React.FC<Props> = ({ title, isFormEditable }) => {
               rules={[
                 {
                   required: true,
-                  message: "Không được để trống ngày.",
-                },
+                  message: "Không được để trống ngày."
+                }
               ]}
             >
               <DatePicker defaultValue={dayjs()} format={dateFormat} />
@@ -114,8 +114,8 @@ const CreateRequestPopup: React.FC<Props> = ({ title, isFormEditable }) => {
               rules={[
                 {
                   required: true,
-                  message: "Không được để trống ngày.",
-                },
+                  message: "Không được để trống ngày."
+                }
               ]}
             >
               <DatePicker defaultValue={dayjs()} format={dateFormat} />

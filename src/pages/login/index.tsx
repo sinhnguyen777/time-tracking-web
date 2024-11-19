@@ -10,7 +10,7 @@ interface UserCredentials {
 const Login = () => {
   const [credentials, setCredentials] = useState<UserCredentials>({
     username: "",
-    password: "",
+    password: ""
   });
   const [showPassword, setShowPassword] = useState(false);
   const [passwordInputType, setPasswordInputType] = useState("password");
@@ -52,7 +52,7 @@ const Login = () => {
               onChange={(e) =>
                 setCredentials((prev) => ({
                   ...prev,
-                  username: e.target.value,
+                  username: e.target.value
                 }))
               }
               className="peer outline-none border-b min-w-full py-2.5"
@@ -73,7 +73,7 @@ const Login = () => {
               onChange={(e) =>
                 setCredentials((prev) => ({
                   ...prev,
-                  password: e.target.value,
+                  password: e.target.value
                 }))
               }
               className="peer outline-none border-b min-w-full py-2.5"
