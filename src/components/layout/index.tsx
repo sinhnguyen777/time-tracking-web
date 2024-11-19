@@ -20,20 +20,14 @@ const Layout: React.FC<Props> = ({ children }) => {
               stroke="currentColor"
               className="size-6"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-              />
+              <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
             </svg>
           </i>
           <div>Logo</div>
         </div>
         <ul>
           {IconList.map((item, index) => {
-            return (
-              <SidebarItem title={item.title} icon={item.icon} key={index} />
-            );
+            return <SidebarItem title={item.title} icon={item.icon} key={index} />;
           })}
         </ul>
       </div>

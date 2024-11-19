@@ -11,11 +11,7 @@ const Test = () => {
         <div className="flex justify-center items-center">
           <div className="flex flex-1 mr-10 border">
             <div className="flex-1">
-              <input
-                type="text"
-                className="w-full outline-none py-2 pl-2"
-                placeholder="Tìm kiếm ngày chấm công"
-              />
+              <input type="text" className="w-full outline-none py-2 pl-2" placeholder="Tìm kiếm ngày chấm công" />
             </div>
             <button className="flex justify-center items-center p-2">
               <svg
@@ -35,10 +31,7 @@ const Test = () => {
             </button>
           </div>
           <div className="font-bold">
-            <button
-              type="button"
-              className="flex bg-sky-500 text-white rounded-md px-4 py-2"
-            >
+            <button type="button" className="flex bg-sky-500 text-white rounded-md px-4 py-2">
               <i className="mr-1">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
