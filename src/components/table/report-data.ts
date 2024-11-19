@@ -7,6 +7,6 @@ export const reportData = [
     ngay: "12/03/2023",
     thoiGianDiMuon: 30,
     phep: "Yes",
-    phat: "No",
-  },
+    phat: "No"
+  }
 ];

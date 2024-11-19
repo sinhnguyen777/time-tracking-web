@@ -7,7 +7,7 @@ import OvertimeReportTable from "@/components/report/overtime-report-table";
 import {
   lateData,
   overtimeData,
-  attendanceDetailData,
+  attendanceDetailData
 } from "@/components/report/report-data";
 import Menu from "@/components/layout/menu";
 import Layout from "@/components/layout";
