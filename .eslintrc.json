@@ -20,6 +20,7 @@
     }
   ],
   "ignorePatterns": [".next/", "node_modules/"],
+  "plugins": ["prettier"],
   "rules": {
     "@typescript-eslint/no-unused-vars": "warn",
     "@typescript-eslint/no-explicit-any": "warn",
@@ -33,7 +34,8 @@
       {
         "usePrettierrc": false,
         "singleQuote": false,
-        "parser": "flow"
+        "parser": "flow",
+        "trailingComma": "none"
       }
     ]
   }

@@ -1,10 +1,11 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { GlobalState } from "@/types/global-state";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 const globalInitialState = {
   count: 0,
   isLoading: true,
-  appLoading: false,
+  appLoading: false
 } as GlobalState;
 
 const globalSlice = createSlice({
@@ -23,8 +24,8 @@ const globalSlice = createSlice({
 
     setAppLoading(state, action: PayloadAction<boolean>) {
       state.appLoading = action.payload;
-    },
-  },
+    }
+  }
 });
 
 export const { actions: globalActions, reducer, name } = globalSlice;

@@ -17,15 +17,16 @@ const configureAppStore = () => {
   const enhancers = [
     createInjectorsEnhancer({
       createReducer: (injectedReducers) => rootReducer(injectedReducers),
-      runSaga,
-    }),
+      runSaga
+    })
   ];
 
   const store = configureStore({
     reducer: createReducer,
-    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(middlewares),
+    middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware().concat(middlewares),
     devTools: false,
-    enhancers: enhancers as any,
+    enhancers: enhancers as any
   });
 
   sagaMiddleware.run(rootSaga);
