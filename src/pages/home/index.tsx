@@ -1,7 +1,10 @@
 import Calendar from "@/components/calendar";
 import Layout from "@/components/layout";
 import Menu from "@/components/layout/menu";
-import TimeKeepingDetails from "@/components/popup/calendar-popup";
+import AccountPopup from "@/components/popup/account-popup";
+import ConfirmationPopup from "@/components/popup/confirmation-popup";
+import CreateRequestPopup from "@/components/popup/create-request-popup";
+import TimeKeepingDetailsPopup from "@/components/popup/timekeeping-popup";
 
 const Test = () => {
   return (
@@ -53,7 +56,11 @@ const Test = () => {
           </div>
         </div>
         <Calendar />
-        <TimeKeepingDetails />
+        {/* <TimeKeepingDetailsPopup title="Chi tiết chấm công" /> */}
+        {/* <ConfirmationPopup title="Xóa tài khoản" name="đạt" /> */}
+        {/* <AccountPopup title="Tạo mới tài khoản" /> */}
+        {/* <CreateRequestPopup title="Tạo mới đơn từ" isFormEditable={false} /> */}
+        <CreateRequestPopup title="Chi tiết đơn từ" isFormEditable={true} />
       </div>
     </Layout>
   );
