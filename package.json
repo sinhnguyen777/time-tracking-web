@@ -48,15 +48,10 @@
     "typescript": "^5"
   },
   "lint-staged": {
-    "*.ts": [
+    "*.{ts,tsx,js}": [
+      "eslint",
       "eslint --fix",
-      "prettier --write",
-      "git add"
-    ],
-    "*.tsx": [
-      "eslint --fix",
-      "prettier --write",
-      "git add"
+      "prettier --write"
     ]
   }
 }

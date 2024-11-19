@@ -22,7 +22,7 @@ const tailLayout = {
 const AccountPopup: React.FC<Props> = ({ title }) => {
   const [form] = Form.useForm();
 
-  const onFinish = (values: any) => {
+  const onFinish = (values: unknown) => {
     console.log(values);
   };
   const onReset = () => {
@@ -32,7 +32,13 @@ const AccountPopup: React.FC<Props> = ({ title }) => {
   return (
     <Popup title={title}>
       <div>
-        <Form {...layout} form={form} name="control-hooks" onFinish={onFinish} className="pt-6 px-10">
+        <Form
+          {...layout}
+          form={form}
+          name="control-hooks"
+          onFinish={onFinish}
+          className="pt-6 px-10"
+        >
           <div className="flex flex-wrap [&>*]:w-1/2 [&>*]:px-4">
             <Form.Item
               name="fullname"

@@ -11,7 +11,8 @@ const ConfirmationPopup: React.FC<Props> = ({ title, name }) => {
     <Popup title={title}>
       <div className="py-4 px-10">
         <div className="font-bold">
-          Bạn chắc chắn muốn {title.toLowerCase()} <span className="text-red-500">{name}</span>?
+          Bạn chắc chắn muốn {title.toLowerCase()}{" "}
+          <span className="text-red-500">{name}</span>?
         </div>
         <div className=" flex justify-between mt-4">
           <button type="button" className="bg-sky-600 text-white px-4 py-2">

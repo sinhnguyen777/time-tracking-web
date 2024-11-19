@@ -35,7 +35,13 @@ const CreateRequestPopup: React.FC<Props> = ({ title, isFormEditable }) => {
   return (
     <Popup title={title}>
       <div>
-        <Form {...layout} form={form} name="control-hooks" onFinish={onFinish} className="pt-6 px-10">
+        <Form
+          {...layout}
+          form={form}
+          name="control-hooks"
+          onFinish={onFinish}
+          className="pt-6 px-10"
+        >
           <div className="flex flex-wrap [&>*]:w-1/2 [&>*]:px-4">
             {/* <Form.Item
                             name="fullname"

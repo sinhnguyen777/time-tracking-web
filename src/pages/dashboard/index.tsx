@@ -48,7 +48,12 @@ const Dashboard: React.FC = () => {
     <Layout hasSider>
       <Sider style={siderStyle}>
         <div className="demo-logo-vertical" />
-        <Menu theme="dark" mode="inline" defaultSelectedKeys={["4"]} items={items} />
+        <Menu
+          theme="dark"
+          mode="inline"
+          defaultSelectedKeys={["4"]}
+          items={items}
+        />
       </Sider>
       <Layout style={{ marginInlineStart: 200 }}>
         <Header style={{ padding: 0, background: colorBgContainer }} />
@@ -73,7 +78,9 @@ const Dashboard: React.FC = () => {
             }
           </div>
         </Content>
-        <Footer style={{ textAlign: "center" }}>Ant Design ©{new Date().getFullYear()} Created by Ant UED</Footer>
+        <Footer style={{ textAlign: "center" }}>
+          Ant Design ©{new Date().getFullYear()} Created by Ant UED
+        </Footer>
       </Layout>
     </Layout>
   );
