@@ -5,6 +5,6 @@ export const users = [
     viTri: "Tester",
     username: "hoapv",
     nguoiTao: "Lê Hoàng Vũ",
-    ngayTao: "10/02/2023",
-  },
+    ngayTao: "10/02/2023"
+  }
 ];

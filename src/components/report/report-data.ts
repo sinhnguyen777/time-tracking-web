@@ -7,7 +7,7 @@ export const lateData = [
     ngay: "12/03/2023",
     thoiGianDiMuon: 30,
     phep: "Yes",
-    phat: "No",
+    phat: "No"
   },
   {
     maNV: "MC0002",
@@ -17,8 +17,8 @@ export const lateData = [
     ngay: "12/03/2023",
     thoiGianDiMuon: 15,
     phep: "No",
-    phat: "Yes",
-  },
+    phat: "Yes"
+  }
 ];
 
 export const overtimeData = [
@@ -29,7 +29,7 @@ export const overtimeData = [
     gioTangCa: "17:30 - 22:30",
     ngay: "12/03/2023",
     thoiGianTangCa: 5,
-    tinhCongTangCa: 0.9375,
+    tinhCongTangCa: 0.9375
   },
   {
     maNV: "MC0002",
@@ -38,8 +38,8 @@ export const overtimeData = [
     gioTangCa: "19:00 - 21:00",
     ngay: "12/03/2023",
     thoiGianTangCa: 2,
-    tinhCongTangCa: 0.375,
-  },
+    tinhCongTangCa: 0.375
+  }
 ];
 export const attendanceDetailData = [
   {
@@ -52,7 +52,7 @@ export const attendanceDetailData = [
     tangCa: "N",
     lamBu: "N",
     gioLam: 8,
-    congLam: 1,
+    congLam: 1
   },
   {
     thu: "Ba",
@@ -64,7 +64,7 @@ export const attendanceDetailData = [
     tangCa: "Y",
     lamBu: "N",
     gioLam: 7.5,
-    congLam: 0.875,
+    congLam: 0.875
   },
   {
     thu: "Tư",
@@ -76,6 +76,6 @@ export const attendanceDetailData = [
     tangCa: "Y",
     lamBu: "N",
     gioLam: 13,
-    congLam: 1.625,
-  },
+    congLam: 1.625
+  }
 ];

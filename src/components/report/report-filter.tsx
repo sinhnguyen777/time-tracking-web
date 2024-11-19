@@ -8,7 +8,7 @@ interface ReportFiltersProps {
 
 const ReportFilters: React.FC<ReportFiltersProps> = ({
   selectedReport,
-  onReportChange,
+  onReportChange
 }) => {
   return (
     <div className="flex items-center justify-between mb-4">
