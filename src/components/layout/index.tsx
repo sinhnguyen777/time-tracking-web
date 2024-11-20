@@ -46,7 +46,7 @@ const Layout: React.FC<Props> = ({ children }) => {
           })}
         </ul>
       </div>
-      <main className="w-4/5 px-10">{children}</main>
+      <main className="w-4/5 px-10 h-lvh overflow-y-auto">{children}</main>
     </div>
   );
 };

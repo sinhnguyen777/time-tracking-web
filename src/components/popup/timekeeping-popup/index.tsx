@@ -2,6 +2,7 @@ import React from "react";
 import { Button, Form, Input, Space } from "antd";
 import dayjs from "dayjs";
 import Popup from "..";
+import CameraInput from "./camera";
 
 interface Props {
   title: string;
@@ -9,7 +10,7 @@ interface Props {
 
 const layout = {
   wrapperCol: {
-    span: 28
+    span: 24
   }
 };
 
@@ -38,6 +39,20 @@ const TimeKeepingPopup: React.FC<Props> = ({ title }) => {
           className="pt-6 px-10"
         >
           <div>
+            <Form.Item
+              name="camera"
+              valuePropName="value"
+              getValueFromEvent={(value) => value}
+              className="[&_.ant-form-item-explain-error]:flex [&_.ant-form-item-explain-error]:justify-center"
+              rules={[
+                {
+                  required: true,
+                  message: "Bạn phải chụp ảnh"
+                }
+              ]}
+            >
+              <CameraInput />
+            </Form.Item>
             <Form.Item
               name="check_at"
               label="Ngày chấm công"
