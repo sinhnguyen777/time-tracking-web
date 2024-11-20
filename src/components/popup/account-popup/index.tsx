@@ -25,8 +25,13 @@ const AccountPopup: React.FC<Props> = ({ title }) => {
   const onFinish = (values: unknown) => {
     console.log(values);
   };
+
   const onReset = () => {
     form.resetFields();
+  };
+
+  const initialValues = {
+    Creator: "Lê Hoàng Vũ"
   };
 
   return (
@@ -37,6 +42,7 @@ const AccountPopup: React.FC<Props> = ({ title }) => {
           form={form}
           name="control-hooks"
           onFinish={onFinish}
+          initialValues={initialValues}
           className="pt-6 px-10"
         >
           <div className="flex flex-wrap [&>*]:w-1/2 [&>*]:px-4">
@@ -71,7 +77,7 @@ const AccountPopup: React.FC<Props> = ({ title }) => {
                 }
               ]}
             >
-              <Input disabled defaultValue="Lê Hoàng Vũ" />
+              <Input disabled />
             </Form.Item>
             <Form.Item
               name="Position"
@@ -126,7 +132,7 @@ const AccountPopup: React.FC<Props> = ({ title }) => {
               <Button type="primary" htmlType="submit">
                 Lưu
               </Button>
-              <Button htmlType="button" className="bg-red-500 text-white">
+              <Button htmlType="button" className="text-red-500 border-red-500">
                 Hủy bỏ
               </Button>
               <Button htmlType="button" onClick={onReset}>

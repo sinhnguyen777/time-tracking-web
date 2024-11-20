@@ -14,11 +14,6 @@ const layout = {
     span: 28
   }
 };
-const tailLayout = {
-  wrapperCol: {
-    span: 28
-  }
-};
 
 const CreateRequestPopup: React.FC<Props> = ({ title, isFormEditable }) => {
   const [form] = Form.useForm();
@@ -32,6 +27,12 @@ const CreateRequestPopup: React.FC<Props> = ({ title, isFormEditable }) => {
 
   const dateFormat = "DD/MM/YYYY";
 
+  const initialValue = {
+    request_start_at: dayjs(),
+    request_end_at: dayjs(),
+    "request-status": "Wait"
+  };
+
   return (
     <Popup title={title}>
       <div>
@@ -40,6 +41,7 @@ const CreateRequestPopup: React.FC<Props> = ({ title, isFormEditable }) => {
           form={form}
           name="control-hooks"
           onFinish={onFinish}
+          initialValues={initialValue}
           className="pt-6 px-10"
         >
           <div className="flex flex-wrap [&>*]:w-1/2 [&>*]:px-4">
@@ -106,7 +108,7 @@ const CreateRequestPopup: React.FC<Props> = ({ title, isFormEditable }) => {
                 }
               ]}
             >
-              <DatePicker defaultValue={dayjs()} format={dateFormat} />
+              <DatePicker value={dayjs()} format={dateFormat} />
             </Form.Item>
             <Form.Item
               name="request_end_at"
@@ -118,23 +120,23 @@ const CreateRequestPopup: React.FC<Props> = ({ title, isFormEditable }) => {
                 }
               ]}
             >
-              <DatePicker defaultValue={dayjs()} format={dateFormat} />
+              <DatePicker value={dayjs()} format={dateFormat} />
             </Form.Item>
             <Form.Item name="request-note" label="Ghi chú">
               <Input placeholder="Nhập ghi chú" />
             </Form.Item>
             {isFormEditable && (
               <Form.Item name="request-status" label="Trạng thái">
-                <Input defaultValue="Wait" />
+                <Input />
               </Form.Item>
             )}
           </div>
-          <Form.Item {...tailLayout}>
+          <Form.Item>
             <Space className="justify-center w-full">
               <Button type="primary" htmlType="submit">
                 Lưu
               </Button>
-              <Button htmlType="button" className="bg-red-500 text-white">
+              <Button htmlType="button" className="text-red-500 border-red-500">
                 Hủy bỏ
               </Button>
               <Button htmlType="button" onClick={onReset}>
