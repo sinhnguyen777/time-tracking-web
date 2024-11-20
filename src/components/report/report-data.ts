@@ -79,3 +79,18 @@ export const attendanceDetailData = [
     congLam: 1.625
   }
 ];
+export const totalWorkReportData = {
+  maNV: "MC0001",
+  hoTen: "Phạm Văn Hóa",
+  viTri: "Tester",
+  congTieuChuan: 22,
+  congThucTe: 20.3,
+  phepDenThang2: 11,
+  phepThang3: 1,
+  phepConLai: 10,
+  tangCa: 0.9375,
+  lamBu: 0,
+  nghiPhep: 1,
+  nghiKhongPhep: 0.7,
+  tongCong: 22.2375
+};

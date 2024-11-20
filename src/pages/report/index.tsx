@@ -4,6 +4,7 @@ import ReportFilters from "@/components/report/report-filter";
 import LateReportTable from "@/components/report/late-report-table";
 import AttendanceDetailTable from "@/components/report/attendance-detail-table";
 import OvertimeReportTable from "@/components/report/overtime-report-table";
+import TotalWorkReport from "@/components/report/total-work-report";
 import {
   lateData,
   overtimeData,
@@ -29,6 +30,7 @@ const ReportPage = () => {
       {selectedReport === "attendance" && (
         <AttendanceDetailTable data={attendanceDetailData} />
       )}
+      {selectedReport === "totalWork" && <TotalWorkReport />}
     </Layout>
   );
 };

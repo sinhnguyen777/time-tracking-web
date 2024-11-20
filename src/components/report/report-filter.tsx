@@ -1,4 +1,3 @@
-// components/report/ReportFilters.tsx
 import React from "react";
 
 interface ReportFiltersProps {
@@ -21,6 +20,7 @@ const ReportFilters: React.FC<ReportFiltersProps> = ({
           <option value="late">Báo cáo đi muộn</option>
           <option value="overtime">Báo cáo tăng ca</option>
           <option value="attendance">Chi tiết chấm công</option>
+          <option value="totalWork">Báo cáo tổng số công</option>
         </select>
         <input
           type="date"
