@@ -1,12 +1,31 @@
+import { useEffect } from "react";
 import Calendar from "@/components/calendar";
 import Layout from "@/components/layout";
 import Menu from "@/components/layout/menu";
+import axiosInterceptorInstance from "@/axios/axiosInterceptorInstance";
+// import TimeKeepingPopup from "@/components/popup/timekeeping-popup";
 // import AccountPopup from "@/components/popup/account-popup";
 // import ConfirmationPopup from "@/components/popup/confirmation-popup";
-import CreateRequestPopup from "@/components/popup/create-request-popup";
-// import TimeKeepingDetailsPopup from "@/components/popup/timekeeping-popup";
+// import CreateRequestPopup from "@/components/popup/create-request-popup";
+// import TimeKeepingDetailsPopup from "@/components/popup/timekeeping-details-popup";
+import BarChart from "@/components/chart";
 
 const Test = () => {
+  const getData = async () => {
+    try {
+      const response = await axiosInterceptorInstance.get("/users"); // Replace with your API endpoint
+      // Handle the response data here
+      console.log(response.data);
+    } catch (error) {
+      // Handle the error here
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
+
   return (
     <Layout>
       <Menu title="Tổng quan" />
@@ -67,7 +86,9 @@ const Test = () => {
         {/* <ConfirmationPopup title="Xóa tài khoản" name="đạt" /> */}
         {/* <AccountPopup title="Tạo mới tài khoản" /> */}
         {/* <CreateRequestPopup title="Tạo mới đơn từ" isFormEditable={false} /> */}
-        <CreateRequestPopup title="Chi tiết đơn từ" isFormEditable={true} />
+        {/* <CreateRequestPopup title="Chi tiết đơn từ" isFormEditable={true} /> */}
+        {/* <TimeKeepingPopup title="Chấm công trên web" /> */}
+        <BarChart />
       </div>
     </Layout>
   );

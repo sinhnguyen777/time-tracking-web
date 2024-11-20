@@ -1,4 +1,5 @@
 import React from "react";
+import { Button } from "antd";
 import Popup from "..";
 
 interface Props {
@@ -15,12 +16,12 @@ const ConfirmationPopup: React.FC<Props> = ({ title, name }) => {
           <span className="text-red-500">{name}</span>?
         </div>
         <div className=" flex justify-between mt-4">
-          <button type="button" className="bg-sky-600 text-white px-4 py-2">
+          <Button type="primary" htmlType="button">
             Xác nhận
-          </button>
-          <button type="button" className="bg-slate-400 text-white px-4 py-2">
+          </Button>
+          <Button htmlType="button" className="text-red-500 border-red-500">
             Hủy bỏ
-          </button>
+          </Button>
         </div>
       </div>
     </Popup>

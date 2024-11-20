@@ -1,48 +1,69 @@
 import React from "react";
+import { Button, Form, Input, Space } from "antd";
+import dayjs from "dayjs";
 import Popup from "..";
 
 interface Props {
   title: string;
 }
 
-const TimeKeepingDetailsPopup: React.FC<Props> = ({ title }) => {
+const layout = {
+  wrapperCol: {
+    span: 28
+  }
+};
+
+const TimeKeepingPopup: React.FC<Props> = ({ title }) => {
+  const [form] = Form.useForm();
+
+  const onFinish = (values: object) => {
+    console.log(values);
+  };
+
+  const dateFormat = "DD/MM/YYYY HH:mm:ss";
+
+  const initialValue = {
+    check_at: dayjs().format(dateFormat)
+  };
+
   return (
     <Popup title={title}>
       <div>
-        <div className="[&_span]:font-bold p-4 pr-20">
+        <Form
+          {...layout}
+          form={form}
+          name="control-hooks"
+          onFinish={onFinish}
+          initialValues={initialValue}
+          className="pt-6 px-10"
+        >
           <div>
-            <span>Ngày: 11/11/2011</span>
+            <Form.Item
+              name="check_at"
+              label="Ngày chấm công"
+              rules={[
+                {
+                  required: true
+                }
+              ]}
+            >
+              <Input disabled />
+            </Form.Item>
           </div>
-          <div>
-            <span>Họ và tên</span>: Chí Phèo
-          </div>
-          <div>
-            <span>Mã nhân viên</span>: E001
-          </div>
-          <div>
-            <span>Vị trí</span>: Developer
-          </div>
-          <div>
-            <span>Giờ check-in</span>: 8:00
-          </div>
-          <div>
-            <span>Giờ check-out</span>: 17:00
-          </div>
-          <div>
-            <span>Tổng giờ làm</span>: 8 giờ
-          </div>
-          <div>
-            <span>Công ngày</span>: 1
-          </div>
-        </div>
-        <div className="px-4 pb-4">
-          <button type="button" className="bg-sky-600 text-white w-full py-2">
-            OK
-          </button>
-        </div>
+          <Form.Item>
+            <Space className="justify-center w-full">
+              <Button type="primary" htmlType="submit">
+                Chấm công
+              </Button>
+              <Button htmlType="button" className="text-red-500 border-red-500">
+                Hủy
+              </Button>
+            </Space>
+          </Form.Item>
+        </Form>
       </div>
     </Popup>
   );
 };
 
-export default TimeKeepingDetailsPopup;
+export default TimeKeepingPopup;
