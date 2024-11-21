@@ -11,17 +11,8 @@ const AppCalendar: React.FC = () => {
     return (
       <div style={{ position: "relative" }}>
         {day % 2 === 0 && (
-          <div
-            style={{
-              position: "absolute",
-              top: 20,
-              left: 0,
-              right: 0,
-              margin: "0 auto",
-              textAlign: "center"
-            }}
-          >
-            <div>test</div>
+          <div className="absolute top-5 left-0 right-0 mx-auto my-0, text-center">
+            <div className="font-bold text-base">1</div>
           </div>
         )}
       </div>

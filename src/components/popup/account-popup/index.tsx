@@ -35,7 +35,8 @@ const AccountPopup: React.FC<Props> = ({ title, setShowPopup, data }) => {
     fullname: data.full_name,
     code: data.code,
     email: data.email,
-    position: data.position
+    position: data.position,
+    "phone-number": data.phone
   };
 
   return (
@@ -61,7 +62,7 @@ const AccountPopup: React.FC<Props> = ({ title, setShowPopup, data }) => {
             >
               <Input placeholder="Nhập họ và tên nhân viên" />
             </Form.Item>
-            <Form.Item
+            {/* <Form.Item
               name="code"
               label="Mã nhân viên"
               rules={[
@@ -71,6 +72,17 @@ const AccountPopup: React.FC<Props> = ({ title, setShowPopup, data }) => {
               ]}
             >
               <Input placeholder="Nhập mã nhân viên" />
+            </Form.Item> */}
+            <Form.Item
+              name="phone-number"
+              label="Số điện thoại"
+              rules={[
+                {
+                  required: true
+                }
+              ]}
+            >
+              <Input placeholder="Nhập số điện thoại" />
             </Form.Item>
             <Form.Item
               name="position"
