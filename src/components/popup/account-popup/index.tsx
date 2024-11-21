@@ -1,11 +1,12 @@
-import React from "react";
-import { Button, Form, Input, Select, Space } from "antd";
-const { Option } = Select;
+import React, { Dispatch, SetStateAction } from "react";
+import { Button, Form, Input, Space } from "antd";
 import Popup from "..";
 import Password from "antd/es/input/Password";
 
 interface Props {
   title: string;
+  setShowPopup: Dispatch<SetStateAction<boolean>>;
+  data: any;
 }
 
 const layout = {
@@ -19,7 +20,7 @@ const tailLayout = {
   }
 };
 
-const AccountPopup: React.FC<Props> = ({ title }) => {
+const AccountPopup: React.FC<Props> = ({ title, setShowPopup, data }) => {
   const [form] = Form.useForm();
 
   const onFinish = (values: unknown) => {
@@ -31,11 +32,14 @@ const AccountPopup: React.FC<Props> = ({ title }) => {
   };
 
   const initialValues = {
-    Creator: "Lê Hoàng Vũ"
+    fullname: data.full_name,
+    code: data.code,
+    email: data.email,
+    position: data.position
   };
 
   return (
-    <Popup title={title}>
+    <Popup title={title} setShowPopup={setShowPopup}>
       <div>
         <Form
           {...layout}
@@ -58,7 +62,7 @@ const AccountPopup: React.FC<Props> = ({ title }) => {
               <Input placeholder="Nhập họ và tên nhân viên" />
             </Form.Item>
             <Form.Item
-              name="Code"
+              name="code"
               label="Mã nhân viên"
               rules={[
                 {
@@ -69,18 +73,7 @@ const AccountPopup: React.FC<Props> = ({ title }) => {
               <Input placeholder="Nhập mã nhân viên" />
             </Form.Item>
             <Form.Item
-              name="Creator"
-              label="Người tạo"
-              rules={[
-                {
-                  required: true
-                }
-              ]}
-            >
-              <Input disabled />
-            </Form.Item>
-            <Form.Item
-              name="Position"
+              name="position"
               label="Vị trí"
               rules={[
                 {
@@ -88,21 +81,18 @@ const AccountPopup: React.FC<Props> = ({ title }) => {
                 }
               ]}
             >
-              <Select placeholder="Chọn vị trí" allowClear>
-                <Option value="code1">Tester</Option>
-                <Option value="code2">Developer</Option>
-              </Select>
+              <Input placeholder="Nhập vị trí" />
             </Form.Item>
             <Form.Item
-              name="username"
-              label="Username"
+              name="email"
+              label="Email"
               rules={[
                 {
                   required: true
                 }
               ]}
             >
-              <Input placeholder="Nhập Username" />
+              <Input placeholder="Nhập Email" />
             </Form.Item>
             <Form.Item
               name="password"
@@ -132,7 +122,11 @@ const AccountPopup: React.FC<Props> = ({ title }) => {
               <Button type="primary" htmlType="submit">
                 Lưu
               </Button>
-              <Button htmlType="button" className="text-red-500 border-red-500">
+              <Button
+                htmlType="button"
+                onClick={() => setShowPopup(false)}
+                className="text-red-500 border-red-500"
+              >
                 Hủy bỏ
               </Button>
               <Button htmlType="button" onClick={onReset}>

@@ -1,9 +1,30 @@
+import { useState, useEffect } from "react";
 import Layout from "@/components/layout";
 import Menu from "@/components/layout/menu";
 import UserTable from "@/components/table";
-import { users } from "@/components/table/user-data";
+// import { users } from "@/components/table/user-data";
+import AccountPopup from "@/components/popup/account-popup";
+import axiosInterceptorInstance from "@/axios/axiosInterceptorInstance";
 
 const Test = () => {
+  const [userList, setUserList] = useState([]);
+  const [showPopup, setShowPopup] = useState(false);
+
+  const HandleGetAllUsers = async () => {
+    try {
+      const response = await axiosInterceptorInstance
+        .get("users")
+        .then((res) => res.data);
+      setUserList(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    HandleGetAllUsers();
+  }, []);
+
   return (
     <Layout>
       <Menu title="Quản lý tài khoản" />
@@ -38,6 +59,7 @@ const Test = () => {
             <button
               type="button"
               className="flex bg-sky-500 text-white rounded-md px-4 py-2"
+              onClick={() => setShowPopup(true)}
             >
               <i className="mr-1">
                 <svg
@@ -59,7 +81,14 @@ const Test = () => {
             </button>
           </div>
         </div>
-        <UserTable data={users} />
+        <UserTable data={userList} />
+        {showPopup && (
+          <AccountPopup
+            data={{}}
+            title="Tạo mới tài khoản"
+            setShowPopup={setShowPopup}
+          />
+        )}
       </div>
     </Layout>
   );

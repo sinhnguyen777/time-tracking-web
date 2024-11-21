@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
+import dayjs from "dayjs";
+import AccountPopup from "@/components/popup/account-popup";
 
 interface UserInterface {
-  maNV: string;
-  hoTen: string;
-  viTri: string;
-  username: string;
-  nguoiTao: string;
-  ngayTao: string;
+  code: string;
+  full_name: string;
+  phone: string;
+  address: string;
+  position: string;
+  email: string;
+  createdAt: string;
 }
 
 interface Props {
@@ -14,6 +17,9 @@ interface Props {
 }
 
 const UserTable: React.FC<Props> = ({ data }) => {
+  const [showPopup, setShowPopup] = useState(false);
+  const [currentPopupId, setCurrentPopupId] = useState(0);
+  const dateFormat = "DD/MM/YYYY";
   return (
     <div className="overflow-x-auto mt-4">
       <table className="min-w-full border-collapse border border-gray-300">
@@ -24,31 +30,46 @@ const UserTable: React.FC<Props> = ({ data }) => {
             <th className="border border-gray-300 px-4 py-2">Họ và tên</th>
             <th className="border border-gray-300 px-4 py-2">Vị trí</th>
             <th className="border border-gray-300 px-4 py-2">Username</th>
-            <th className="border border-gray-300 px-4 py-2">Password</th>
-            <th className="border border-gray-300 px-4 py-2">Người tạo</th>
+            <th className="border border-gray-300 px-4 py-2">Địa chỉ</th>
+            <th className="border border-gray-300 px-4 py-2">Số điện thoại</th>
             <th className="border border-gray-300 px-4 py-2">Ngày tạo</th>
             <th className="border border-gray-300 px-4 py-2">Tác vụ</th>
           </tr>
         </thead>
         <tbody>
+          {showPopup && (
+            <AccountPopup
+              data={data[currentPopupId]}
+              title="Chỉnh sửa tài khoản"
+              setShowPopup={setShowPopup}
+            />
+          )}
           {data.map((user, index) => (
             <tr key={index} className="text-center">
               <td className="border border-gray-300 px-4 py-2">{index + 1}</td>
-              <td className="border border-gray-300 px-4 py-2">{user.maNV}</td>
-              <td className="border border-gray-300 px-4 py-2">{user.hoTen}</td>
-              <td className="border border-gray-300 px-4 py-2">{user.viTri}</td>
+              <td className="border border-gray-300 px-4 py-2">{user.code}</td>
               <td className="border border-gray-300 px-4 py-2">
-                {user.username}
-              </td>
-              <td className="border border-gray-300 px-4 py-2">******</td>
-              <td className="border border-gray-300 px-4 py-2">
-                {user.nguoiTao}
+                {user.full_name}
               </td>
               <td className="border border-gray-300 px-4 py-2">
-                {user.ngayTao}
+                {user.position}
+              </td>
+              <td className="border border-gray-300 px-4 py-2">{user.email}</td>
+              <td className="border border-gray-300 px-4 py-2">
+                {user.address}
+              </td>
+              <td className="border border-gray-300 px-4 py-2">{user.phone}</td>
+              <td className="border border-gray-300 px-4 py-2">
+                {dayjs(user.createdAt).format(dateFormat)}
               </td>
               <td className="border border-gray-300 px-4 py-2">
-                <button className="text-blue-500 hover:underline mx-2">
+                <button
+                  onClick={() => {
+                    setShowPopup(true);
+                    setCurrentPopupId(index);
+                  }}
+                  className="text-blue-500 hover:underline mx-2"
+                >
                   ✏️
                 </button>
                 <button className="text-red-500 hover:underline mx-2">
