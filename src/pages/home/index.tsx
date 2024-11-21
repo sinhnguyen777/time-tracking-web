@@ -1,12 +1,31 @@
-import Calendar from "@/components/calendar";
+import { useEffect } from "react";
+// import Calendar from "@/components/calendar";
 import Layout from "@/components/layout";
 import Menu from "@/components/layout/menu";
+import axiosInterceptorInstance from "@/axios/axiosInterceptorInstance";
+import TimeKeepingPopup from "@/components/popup/timekeeping-popup";
 // import AccountPopup from "@/components/popup/account-popup";
 // import ConfirmationPopup from "@/components/popup/confirmation-popup";
-import CreateRequestPopup from "@/components/popup/create-request-popup";
-// import TimeKeepingDetailsPopup from "@/components/popup/timekeeping-popup";
+// import CreateRequestPopup from "@/components/popup/create-request-popup";
+// import TimeKeepingDetailsPopup from "@/components/popup/timekeeping-details-popup";
+// import BarChart from "@/components/chart";
 
 const Test = () => {
+  const getData = async () => {
+    try {
+      const response = await axiosInterceptorInstance.get("/users"); // Replace with your API endpoint
+      // Handle the response data here
+      console.log(response.data);
+    } catch (error) {
+      // Handle the error here
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
+
   return (
     <Layout>
       <Menu title="Tổng quan" />
@@ -37,37 +56,15 @@ const Test = () => {
               </svg>
             </button>
           </div>
-          <div className="font-bold">
-            <button
-              type="button"
-              className="flex bg-sky-500 text-white rounded-md px-4 py-2"
-            >
-              <i className="mr-1">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                  className="size-6"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5"
-                  />
-                </svg>
-              </i>
-              Chọn tháng
-            </button>
-          </div>
         </div>
-        <Calendar />
+        {/* <Calendar /> */}
         {/* <TimeKeepingDetailsPopup title="Chi tiết chấm công" /> */}
         {/* <ConfirmationPopup title="Xóa tài khoản" name="đạt" /> */}
         {/* <AccountPopup title="Tạo mới tài khoản" /> */}
         {/* <CreateRequestPopup title="Tạo mới đơn từ" isFormEditable={false} /> */}
-        <CreateRequestPopup title="Chi tiết đơn từ" isFormEditable={true} />
+        {/* <CreateRequestPopup title="Chi tiết đơn từ" isFormEditable={true} /> */}
+        <TimeKeepingPopup title="Chấm công trên web" />
+        {/* <BarChart /> */}
       </div>
     </Layout>
   );

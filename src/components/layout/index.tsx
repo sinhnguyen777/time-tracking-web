@@ -1,4 +1,5 @@
 import React, { ReactNode } from "react";
+import { usePathname } from "next/navigation";
 import SidebarItem from "./sidebar-item";
 import IconList from "./icon-list";
 
@@ -7,6 +8,7 @@ interface Props {
 }
 
 const Layout: React.FC<Props> = ({ children }) => {
+  const pathname = usePathname();
   return (
     <div className="flex">
       <div className="bg-sky-600 w-1/5 text-white h-lvh [&_i]:mr-3">
@@ -31,13 +33,20 @@ const Layout: React.FC<Props> = ({ children }) => {
         </div>
         <ul>
           {IconList.map((item, index) => {
+            const is_active = item.link === pathname ? true : false;
             return (
-              <SidebarItem title={item.title} icon={item.icon} key={index} />
+              <SidebarItem
+                title={item.title}
+                icon={item.icon}
+                link={item.link}
+                active={is_active}
+                key={index}
+              />
             );
           })}
         </ul>
       </div>
-      <main className="w-4/5 px-10">{children}</main>
+      <main className="w-4/5 px-10 h-lvh overflow-y-auto">{children}</main>
     </div>
   );
 };

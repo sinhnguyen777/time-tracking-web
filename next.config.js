@@ -3,6 +3,15 @@
 const path = require("path");
 
 const nextConfig = {
+  async redirects() {
+    return [
+      {
+        source: "/",
+        destination: "/home",
+        permanent: true
+      }
+    ];
+  },
   transpilePackages: [
     "rc-util",
     "@ant-design/icons-svg",

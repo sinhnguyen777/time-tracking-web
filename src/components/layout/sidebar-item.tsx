@@ -1,14 +1,19 @@
+import Link from "next/link";
 import React from "react";
 
 interface Props {
   title: string;
   icon: string;
+  link: string;
+  active: boolean;
 }
 
-const SidebarItem: React.FC<Props> = ({ title, icon }) => {
+const SidebarItem: React.FC<Props> = ({ title, icon, link, active }) => {
   return (
-    <li className="hover:bg-sky-800 select-none cursor-pointer p-4">
-      <a href="#" className="flex">
+    <li
+      className={`hover:bg-sky-800 select-none cursor-pointer p-4 ${active && "bg-sky-800"}`}
+    >
+      <Link href={link} className="flex">
         <i>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -22,7 +27,7 @@ const SidebarItem: React.FC<Props> = ({ title, icon }) => {
           </svg>
         </i>
         {title}
-      </a>
+      </Link>
     </li>
   );
 };
