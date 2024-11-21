@@ -3,6 +3,7 @@ import Layout from "@/components/layout";
 import Menu from "@/components/layout/menu";
 import axiosInterceptorInstance from "@/axios/axiosInterceptorInstance";
 // import Calendar from "@/components/calendar";
+import CustomCalendar from "@/components/custom-calendar";
 import TimeKeepingPopup from "@/components/popup/timekeeping-popup";
 import { Button } from "antd";
 // import AccountPopup from "@/components/popup/account-popup";
@@ -31,9 +32,9 @@ const Test = () => {
 
   return (
     <Layout>
-      <Menu title="Tổng quan" />
-      <div>
-        <div className="flex justify-center items-center">
+      <div className="flex flex-col h-full">
+        <Menu title="Tổng quan" />
+        <div className="flex justify-center items-center mb-4">
           <div className="flex flex-1 mr-10 border">
             <div className="flex-1">
               <input
@@ -71,6 +72,7 @@ const Test = () => {
           </div>
         </div>
         {/* <Calendar /> */}
+        <CustomCalendar />
         {/* <TimeKeepingDetailsPopup title="Chi tiết chấm công" /> */}
         {/* <ConfirmationPopup title="Xóa tài khoản" name="đạt" /> */}
         {/* <AccountPopup title="Tạo mới tài khoản" /> */}

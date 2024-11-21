@@ -6,7 +6,6 @@ interface UserInterface {
   code: string;
   full_name: string;
   phone: string;
-  address: string;
   position: string;
   email: string;
   createdAt: string;
@@ -29,8 +28,7 @@ const UserTable: React.FC<Props> = ({ data }) => {
             <th className="border border-gray-300 px-4 py-2">Mã NV</th>
             <th className="border border-gray-300 px-4 py-2">Họ và tên</th>
             <th className="border border-gray-300 px-4 py-2">Vị trí</th>
-            <th className="border border-gray-300 px-4 py-2">Username</th>
-            <th className="border border-gray-300 px-4 py-2">Địa chỉ</th>
+            <th className="border border-gray-300 px-4 py-2">Email</th>
             <th className="border border-gray-300 px-4 py-2">Số điện thoại</th>
             <th className="border border-gray-300 px-4 py-2">Ngày tạo</th>
             <th className="border border-gray-300 px-4 py-2">Tác vụ</th>
@@ -55,9 +53,6 @@ const UserTable: React.FC<Props> = ({ data }) => {
                 {user.position}
               </td>
               <td className="border border-gray-300 px-4 py-2">{user.email}</td>
-              <td className="border border-gray-300 px-4 py-2">
-                {user.address}
-              </td>
               <td className="border border-gray-300 px-4 py-2">{user.phone}</td>
               <td className="border border-gray-300 px-4 py-2">
                 {dayjs(user.createdAt).format(dateFormat)}
