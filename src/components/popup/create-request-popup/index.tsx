@@ -11,7 +11,7 @@ interface Props {
 
 const layout = {
   wrapperCol: {
-    span: 28
+    span: 24
   }
 };
 
