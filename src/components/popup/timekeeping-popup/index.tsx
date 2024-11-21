@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import { Button, Form, Input, Space } from "antd";
 import dayjs from "dayjs";
 import Popup from "..";
@@ -6,6 +6,7 @@ import CameraInput from "./camera";
 
 interface Props {
   title: string;
+  setShowPopup: Dispatch<SetStateAction<boolean>>;
 }
 
 const layout = {
@@ -14,7 +15,7 @@ const layout = {
   }
 };
 
-const TimeKeepingPopup: React.FC<Props> = ({ title }) => {
+const TimeKeepingPopup: React.FC<Props> = ({ title, setShowPopup }) => {
   const [form] = Form.useForm();
 
   const onFinish = (values: object) => {
@@ -28,7 +29,7 @@ const TimeKeepingPopup: React.FC<Props> = ({ title }) => {
   };
 
   return (
-    <Popup title={title}>
+    <Popup title={title} setShowPopup={setShowPopup}>
       <div>
         <Form
           {...layout}
@@ -70,7 +71,11 @@ const TimeKeepingPopup: React.FC<Props> = ({ title }) => {
               <Button type="primary" htmlType="submit">
                 Chấm công
               </Button>
-              <Button htmlType="button" className="text-red-500 border-red-500">
+              <Button
+                htmlType="button"
+                onClick={() => setShowPopup(false)}
+                className="text-red-500 border-red-500"
+              >
                 Hủy
               </Button>
             </Space>

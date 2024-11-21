@@ -1,22 +1,31 @@
+import { useState } from "react";
+import axiosInterceptorInstance from "@/axios/axiosInterceptorInstance";
 import Logo from "@/assets/images/favicon.png";
 import Image from "next/image";
-import { useState } from "react";
 
 interface UserCredentials {
-  username: string;
+  email: string;
   password: string;
 }
 
 const Login = () => {
   const [credentials, setCredentials] = useState<UserCredentials>({
-    username: "",
+    email: "",
     password: ""
   });
   const [showPassword, setShowPassword] = useState(false);
   const [passwordInputType, setPasswordInputType] = useState("password");
 
-  const GetCredentials = () => {
-    console.log(credentials);
+  const HandleLogin = async () => {
+    try {
+      const response = await axiosInterceptorInstance
+        .post("/auth/login", credentials)
+        .then((res) => res.data);
+      localStorage.setItem("token", JSON.stringify(response.accessToken));
+      console.log(response);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const ToggleShowPassword = () => {
@@ -41,18 +50,18 @@ const Login = () => {
           className="[&>div]:my-6"
           onSubmit={(e) => {
             e.preventDefault();
-            GetCredentials();
+            HandleLogin();
           }}
         >
           <div className="relative">
             <input
               type="text"
               id="user-input"
-              value={credentials.username}
+              value={credentials.email}
               onChange={(e) =>
                 setCredentials((prev) => ({
                   ...prev,
-                  username: e.target.value
+                  email: e.target.value
                 }))
               }
               className="peer outline-none border-b min-w-full py-2.5"
@@ -62,7 +71,7 @@ const Login = () => {
               htmlFor="user-input"
               className="absolute left-0 top-2.5 select-none cursor-text text-gray-500 peer-focus:text-sky-600 peer-valid:text-sky-600 peer-focus:-top-4 peer-valid:-top-4 peer-focus:text-sm peer-valid:text-sm transition-all"
             >
-              Username
+              Email
             </label>
           </div>
           <div className="relative">

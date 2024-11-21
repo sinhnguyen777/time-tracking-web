@@ -1,9 +1,10 @@
-import { useEffect } from "react";
-// import Calendar from "@/components/calendar";
+import { useEffect, useState } from "react";
 import Layout from "@/components/layout";
 import Menu from "@/components/layout/menu";
 import axiosInterceptorInstance from "@/axios/axiosInterceptorInstance";
+// import Calendar from "@/components/calendar";
 import TimeKeepingPopup from "@/components/popup/timekeeping-popup";
+import { Button } from "antd";
 // import AccountPopup from "@/components/popup/account-popup";
 // import ConfirmationPopup from "@/components/popup/confirmation-popup";
 // import CreateRequestPopup from "@/components/popup/create-request-popup";
@@ -11,6 +12,8 @@ import TimeKeepingPopup from "@/components/popup/timekeeping-popup";
 // import BarChart from "@/components/chart";
 
 const Test = () => {
+  const [showPopup, setShowPopup] = useState(false);
+
   const getData = async () => {
     try {
       const response = await axiosInterceptorInstance.get("/users"); // Replace with your API endpoint
@@ -56,6 +59,16 @@ const Test = () => {
               </svg>
             </button>
           </div>
+          <div>
+            <Button
+              type="primary"
+              htmlType="button"
+              className="py-5 text-base"
+              onClick={() => setShowPopup(true)}
+            >
+              Chấm công
+            </Button>
+          </div>
         </div>
         {/* <Calendar /> */}
         {/* <TimeKeepingDetailsPopup title="Chi tiết chấm công" /> */}
@@ -63,7 +76,12 @@ const Test = () => {
         {/* <AccountPopup title="Tạo mới tài khoản" /> */}
         {/* <CreateRequestPopup title="Tạo mới đơn từ" isFormEditable={false} /> */}
         {/* <CreateRequestPopup title="Chi tiết đơn từ" isFormEditable={true} /> */}
-        <TimeKeepingPopup title="Chấm công trên web" />
+        {showPopup && (
+          <TimeKeepingPopup
+            title="Chấm công trên web"
+            setShowPopup={setShowPopup}
+          />
+        )}
         {/* <BarChart /> */}
       </div>
     </Layout>
