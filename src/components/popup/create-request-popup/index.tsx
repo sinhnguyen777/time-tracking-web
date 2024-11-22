@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import { Button, DatePicker, Form, Input, Select, Space } from "antd";
 import dayjs from "dayjs";
 const { Option } = Select;
@@ -7,6 +7,8 @@ import Popup from "..";
 interface Props {
   title: string;
   isFormEditable: boolean;
+  setShowPopup: Dispatch<SetStateAction<boolean>>;
+  data: any;
 }
 
 const layout = {
@@ -15,7 +17,12 @@ const layout = {
   }
 };
 
-const CreateRequestPopup: React.FC<Props> = ({ title, isFormEditable }) => {
+const CreateRequestPopup: React.FC<Props> = ({
+  data,
+  title,
+  isFormEditable,
+  setShowPopup
+}) => {
   const [form] = Form.useForm();
 
   const onFinish = (values: object) => {
@@ -30,11 +37,12 @@ const CreateRequestPopup: React.FC<Props> = ({ title, isFormEditable }) => {
   const initialValue = {
     request_start_at: dayjs(),
     request_end_at: dayjs(),
-    "request-status": "Wait"
+    "request-status": "Wait",
+    related: data.nguoiLQ
   };
 
   return (
-    <Popup title={title}>
+    <Popup title={title} setShowPopup={setShowPopup}>
       <div>
         <Form
           {...layout}
@@ -136,7 +144,11 @@ const CreateRequestPopup: React.FC<Props> = ({ title, isFormEditable }) => {
               <Button type="primary" htmlType="submit">
                 Lưu
               </Button>
-              <Button htmlType="button" className="text-red-500 border-red-500">
+              <Button
+                htmlType="button"
+                onClick={() => setShowPopup(false)}
+                className="text-red-500 border-red-500"
+              >
                 Hủy bỏ
               </Button>
               <Button htmlType="button" onClick={onReset}>

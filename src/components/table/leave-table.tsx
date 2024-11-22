@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
+import CreateRequestPopup from "../popup/create-request-popup";
+import ConfirmationPopup from "../popup/confirmation-popup";
 
 interface LeaveInterface {
   maDon: string;
@@ -14,8 +16,27 @@ interface Props {
 }
 
 const LeaveTable: React.FC<Props> = ({ data }) => {
+  const [showPopup, setShowPopup] = useState(false);
+  const [showConfirmPopup, setShowConfirmPopup] = useState(false);
+  const [currentPopupId, setCurrentPopupId] = useState(0);
+
   return (
     <div className="overflow-x-auto mt-4">
+      {showPopup && (
+        <CreateRequestPopup
+          setShowPopup={setShowPopup}
+          data={data[currentPopupId]}
+          title="Tạo mới đơn từ"
+          isFormEditable={false}
+        />
+      )}
+      {showConfirmPopup && (
+        <ConfirmationPopup
+          title="Xóa đơn"
+          name={data[currentPopupId].loaiDon}
+          setShowPopup={setShowConfirmPopup}
+        />
+      )}
       <table className="min-w-full border-collapse border border-gray-300">
         <thead>
           <tr className="bg-gray-200">
@@ -52,10 +73,22 @@ const LeaveTable: React.FC<Props> = ({ data }) => {
                 {user.ngayDuyet}
               </td>
               <td className="border border-gray-300 px-4 py-2">
-                <button className="text-blue-500 hover:underline mx-2">
+                <button
+                  onClick={() => {
+                    setShowPopup(true);
+                    setCurrentPopupId(index);
+                  }}
+                  className="text-blue-500 hover:underline mx-2"
+                >
                   ✏️
                 </button>
-                <button className="text-red-500 hover:underline mx-2">
+                <button
+                  onClick={() => {
+                    setShowConfirmPopup(true);
+                    setCurrentPopupId(index);
+                  }}
+                  className="text-red-500 hover:underline mx-2"
+                >
                   🗑️
                 </button>
               </td>

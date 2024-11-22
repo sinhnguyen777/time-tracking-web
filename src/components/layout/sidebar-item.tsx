@@ -11,9 +11,9 @@ interface Props {
 const SidebarItem: React.FC<Props> = ({ title, icon, link, active }) => {
   return (
     <li
-      className={`hover:bg-sky-800 select-none cursor-pointer p-4 ${active && "bg-sky-800"}`}
+      className={`hover:bg-sky-800 select-none cursor-pointer ${active && "bg-sky-800"}`}
     >
-      <Link href={link} className="flex">
+      <Link href={link} className="flex p-4">
         <i>
           <svg
             xmlns="http://www.w3.org/2000/svg"
