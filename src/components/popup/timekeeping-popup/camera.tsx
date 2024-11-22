@@ -42,6 +42,8 @@ const CameraInput: React.FC<any> = ({ value = null, onChange }) => {
         <div>
           <Image
             src={capturedImage}
+            height={500}
+            width={500}
             alt="Captured"
             className="w-3/4 mx-auto -scale-x-100"
           />

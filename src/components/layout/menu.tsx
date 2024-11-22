@@ -1,7 +1,17 @@
+import { useEffect, useState } from "react";
+
 interface Props {
   title: string;
 }
 const Menu: React.FC<Props> = ({ title }) => {
+  const [username, setUsername] = useState("");
+
+  useEffect(() => {
+    setUsername(
+      JSON.parse(localStorage.getItem("user-info") || "{}").full_name
+    );
+  }, []);
+
   return (
     <nav className="flex [&>*]:py-6 justify-center items-center">
       <h1 className="font-bold flex-1">{title}</h1>
@@ -19,7 +29,7 @@ const Menu: React.FC<Props> = ({ title }) => {
           />
         </svg>
       </button>
-      <div className="ml-10">avatar</div>
+      <div className="ml-10">{username}</div>
     </nav>
   );
 };

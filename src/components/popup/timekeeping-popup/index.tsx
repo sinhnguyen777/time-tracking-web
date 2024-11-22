@@ -1,8 +1,11 @@
-import React, { Dispatch, SetStateAction } from "react";
+import React, { Dispatch, SetStateAction, useState, useEffect } from "react";
+import Router from "next/router";
 import { Button, Form, Input, Space } from "antd";
-import dayjs from "dayjs";
+import dayjs, { Dayjs } from "dayjs";
 import Popup from "..";
 import CameraInput from "./camera";
+import HandleCheckin from "@/services/handle-checkin";
+import HandleCheckout from "@/services/handle-checkout";
 
 interface Props {
   title: string;
@@ -16,17 +19,42 @@ const layout = {
 };
 
 const TimeKeepingPopup: React.FC<Props> = ({ title, setShowPopup }) => {
+  const [currentTime, setCurrentTime] = useState<Dayjs>(dayjs());
   const [form] = Form.useForm();
 
-  const onFinish = (values: object) => {
-    console.log(values);
+  const Checkin = () => {
+    form.validateFields().then(async () => {
+      await HandleCheckin();
+      setShowPopup(false);
+      Router.reload();
+    });
+  };
+
+  const Checkout = () => {
+    form.validateFields().then(async () => {
+      await HandleCheckout();
+      setShowPopup(false);
+      Router.reload();
+    });
   };
 
   const dateFormat = "DD/MM/YYYY HH:mm:ss";
 
+  useEffect(() => {
+    const timeInterval = setInterval(() => {
+      setCurrentTime(dayjs());
+    }, 1000);
+
+    return () => clearInterval(timeInterval);
+  }, []);
+
   const initialValue = {
-    check_at: dayjs().format(dateFormat)
+    check_at: currentTime.format(dateFormat)
   };
+
+  useEffect(() => {
+    form.setFieldsValue({ check_at: currentTime.format(dateFormat) });
+  }, [currentTime]);
 
   return (
     <Popup title={title} setShowPopup={setShowPopup}>
@@ -35,7 +63,6 @@ const TimeKeepingPopup: React.FC<Props> = ({ title, setShowPopup }) => {
           {...layout}
           form={form}
           name="control-hooks"
-          onFinish={onFinish}
           initialValues={initialValue}
           className="pt-6 px-10"
         >
@@ -68,8 +95,11 @@ const TimeKeepingPopup: React.FC<Props> = ({ title, setShowPopup }) => {
           </div>
           <Form.Item>
             <Space className="justify-center w-full">
-              <Button type="primary" htmlType="submit">
-                Chấm công
+              <Button type="primary" onClick={Checkin} htmlType="button">
+                Check-in
+              </Button>
+              <Button type="primary" onClick={Checkout} htmlType="button">
+                Check-out
               </Button>
               <Button
                 htmlType="button"
