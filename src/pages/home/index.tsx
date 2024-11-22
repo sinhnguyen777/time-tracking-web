@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Layout from "@/components/layout";
-import Menu from "@/components/layout/menu";
+// import Menu from "@/components/layout/menu";
 import CustomCalendar from "@/components/custom-calendar";
 import TimeKeepingPopup from "@/components/popup/timekeeping-popup";
 import { Button, DatePicker } from "antd";
@@ -21,9 +21,8 @@ const Test = () => {
   return (
     <Layout>
       <div className="flex flex-col h-full">
-        <Menu title="Tổng quan" />
-        <div className="flex justify-center items-center mb-4">
-          <div className="flex flex-1 border mr-4">
+        <div className="flex justify-end items-center mb-4">
+          {/* <div className="flex flex-1 border mr-4">
             <div className="flex-1">
               <input
                 type="text"
@@ -47,7 +46,7 @@ const Test = () => {
                 />
               </svg>
             </button>
-          </div>
+          </div> */}
           <div className="mr-4">
             <DatePicker
               picker="month"
@@ -73,10 +72,6 @@ const Test = () => {
           selectedMonth={CalendarMonth}
           setCalendarMonth={setCalendarMonth}
         />
-        {/* <TimeKeepingDetailsPopup title="Chi tiết chấm công" /> */}
-        {/* <ConfirmationPopup title="Xóa tài khoản" name="đạt" /> */}
-        {/* <CreateRequestPopup title="Tạo mới đơn từ" isFormEditable={false} /> */}
-        {/* <CreateRequestPopup title="Chi tiết đơn từ" isFormEditable={true} /> */}
         {showPopup && (
           <TimeKeepingPopup
             title="Chấm công trên web"

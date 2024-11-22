@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Layout from "@/components/layout";
-import Menu from "@/components/layout/menu";
+// import Menu from "@/components/layout/menu";
 import UserTable from "@/components/table";
 // import { users } from "@/components/table/user-data";
 import AccountPopup from "@/components/popup/account-popup";
@@ -27,7 +27,6 @@ const Test = () => {
 
   return (
     <Layout>
-      <Menu title="Quản lý tài khoản" />
       <div>
         <div className="flex justify-center items-center">
           <div className="flex flex-1 mr-10 border">

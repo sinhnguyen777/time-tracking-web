@@ -2,6 +2,9 @@ import { useState, useEffect, Dispatch, SetStateAction } from "react";
 import CalendarCell from "./calendar-cell";
 import dayjs, { Dayjs } from "dayjs";
 import axiosInterceptorInstance from "@/axios/axiosInterceptorInstance";
+import utc from "dayjs/plugin/utc";
+
+dayjs.extend(utc);
 
 interface Props {
   selectedMonth: Dayjs;
@@ -172,16 +175,24 @@ const CustomCalendar: React.FC<Props> = ({
                       if (date === day) {
                         late_time = info["late_minutes"];
                         status = info["status"];
-                        time_check_in = dayjs(info["time_check_in"]).format(
-                          "HH:mm"
-                        );
-                        time_check_out = dayjs(info["time_check_out"]).format(
-                          "HH:mm"
-                        );
+                        if (info["time_check_in"] && info["time_check_out"]) {
+                          time_check_in = dayjs
+                            .utc(info["time_check_in"])
+                            .format("HH:mm");
+                          time_check_out = dayjs
+                            .utc(info["time_check_out"])
+                            .format("HH:mm");
+                        } else {
+                          time_check_in = "00:00";
+                          time_check_out = "00:00";
+                        }
                       }
                     });
                     return (
                       <CalendarCell
+                        date={dayjs(
+                          new Date(currentYear, currentMonth, day)
+                        ).format("DD/MM/YYYY")}
                         lateTime={late_time}
                         status={status}
                         key={index}
