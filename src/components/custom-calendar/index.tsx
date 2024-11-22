@@ -150,7 +150,7 @@ const CustomCalendar: React.FC<Props> = ({
         </div>
         <div className="overflow-auto">
           <div>
-            <div className="flex [&>*]:flex-1 text-center w-[1500px] [&>div]:py-2 [&>div]:border-x [&>div]:border-t">
+            <div className="flex [&>*]:flex-1 text-center w-[1500px] [&>div]:py-2 [&>div]:border-x [&>div]:border-t sticky top-0 bg-white z-[999]">
               <div>Chủ nhật</div>
               <div>Thứ hai</div>
               <div>Thứ ba</div>
