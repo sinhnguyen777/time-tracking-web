@@ -4,6 +4,7 @@ const axiosInterceptorInstance = axios.create({
   baseURL: "https://time-tracking-service.onrender.com/",
   withCredentials: true,
   headers: {
+    "Access-Control-Allow-Origin": "*",
     "Content-Type": "application/json"
   }
   // Replace with your API base URL
