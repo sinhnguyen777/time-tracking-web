@@ -76,7 +76,7 @@ const Layout: React.FC<Props> = ({ children }) => {
           </li>
         </ul>
       </div>
-      <main className="w-4/5 px-10 h-lvh">{children}</main>
+      <main className="w-4/5 px-10 h-lvh pt-6">{children}</main>
     </div>
   );
 };

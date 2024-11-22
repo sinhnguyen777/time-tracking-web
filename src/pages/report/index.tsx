@@ -10,7 +10,7 @@ import {
   overtimeData,
   attendanceDetailData
 } from "@/components/report/report-data";
-import Menu from "@/components/layout/menu";
+// import Menu from "@/components/layout/menu";
 import Layout from "@/components/layout";
 
 const ReportPage = () => {
@@ -18,7 +18,6 @@ const ReportPage = () => {
 
   return (
     <Layout>
-      <Menu title="Báo cáo thống kê" />
       <ReportFilters
         selectedReport={selectedReport}
         onReportChange={setSelectedReport}

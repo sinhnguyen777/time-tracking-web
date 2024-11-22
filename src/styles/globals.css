@@ -41,19 +41,19 @@ body {
     @apply border-green-400
   }
 
-  .calendar-cell-leave {
+  .calendar-cell-absent {
     @apply border-red-400
   }
 
-  .calendar-cell-leave>.calendar-cell-title {
+  .calendar-cell-absent>.calendar-cell-title {
     @apply bg-red-400 text-white
   }
 
-  .calendar-cell-leave>.calendar-cell-body {
+  .calendar-cell-absent>.calendar-cell-body {
     @apply bg-red-50
   }
 
-  .calendar-cell-leave>.calendar-cell-body>* {
+  .calendar-cell-absent>.calendar-cell-body>* {
     @apply border-red-400
   }
 }

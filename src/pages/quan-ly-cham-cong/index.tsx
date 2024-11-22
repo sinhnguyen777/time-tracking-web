@@ -1,5 +1,5 @@
 import Layout from "@/components/layout";
-import Menu from "@/components/layout/menu";
+// import Menu from "@/components/layout/menu";
 import { Button, Form, Input, Space, TimePicker } from "antd";
 import dayjs from "dayjs";
 
@@ -44,7 +44,6 @@ const TimeTrackingManagement = () => {
   };
   return (
     <Layout>
-      <Menu title="Thiết lập chấm công" />
       <div className="bg-blue-50 pb-1">
         <Form
           {...layout}
