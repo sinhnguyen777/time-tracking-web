@@ -1,8 +1,7 @@
-import React from "react";
-import { Select, DatePicker } from "antd";
-import locale from "antd/es/date-picker/locale/vi_VN";
+import { Select } from "antd";
 import dayjs from "dayjs";
 import "dayjs/locale/vi";
+import React from "react";
 dayjs.locale("vi");
 
 interface ReportFiltersProps {
@@ -39,7 +38,7 @@ const ReportFilters: React.FC<ReportFiltersProps> = ({
             }
           ]}
         />
-        <DatePicker locale={locale} picker="month" />
+        {/* <DatePicker locale={locale} picker="month" /> */}
       </div>
       <button className="bg-sky-500 text-white px-4 py-2 rounded hover:bg-sky-600">
         Xuất file

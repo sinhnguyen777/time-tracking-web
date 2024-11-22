@@ -16,7 +16,7 @@ const TotalWorkReport: React.FC<TotalWorkReportProps> = ({ data }) => {
       </div>
       <div style={{ margin: "20px", fontSize: "16px", lineHeight: "24px" }}>
         <p>
-          <strong>Mã NV:</strong> {data.code}
+          <strong>Mã NV:</strong> {data.user_code}
         </p>
         <p>
           <strong>Họ và tên:</strong> {data.name}
