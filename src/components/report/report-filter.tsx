@@ -1,4 +1,9 @@
 import React from "react";
+import { Select, DatePicker } from "antd";
+import locale from "antd/es/date-picker/locale/vi_VN";
+import dayjs from "dayjs";
+import "dayjs/locale/vi";
+dayjs.locale("vi");
 
 interface ReportFiltersProps {
   selectedReport: string;
@@ -12,24 +17,29 @@ const ReportFilters: React.FC<ReportFiltersProps> = ({
   return (
     <div className="flex items-center justify-between mb-4">
       <div className="flex gap-2">
-        <select
-          value={selectedReport}
-          onChange={(e) => onReportChange(e.target.value)}
-          className="bg-sky-500 text-white px-4 py-2 rounded hover:bg-sky-600"
-        >
-          <option value="late">Báo cáo đi muộn</option>
-          <option value="overtime">Báo cáo tăng ca</option>
-          <option value="attendance">Chi tiết chấm công</option>
-          <option value="totalWork">Báo cáo tổng số công</option>
-        </select>
-        <input
-          type="date"
-          className="border border-gray-300 px-4 py-2 rounded"
+        <Select
+          defaultValue={selectedReport}
+          onChange={(value) => onReportChange(value)}
+          options={[
+            {
+              value: "late",
+              label: "Báo cáo đi muộn"
+            },
+            {
+              value: "overtime",
+              label: "Báo cáo tăng ca"
+            },
+            {
+              value: "attendance",
+              label: "Chi tiết chấm công"
+            },
+            {
+              value: "totalWork",
+              label: "Báo cáo tổng số công"
+            }
+          ]}
         />
-        <input
-          type="date"
-          className="border border-gray-300 px-4 py-2 rounded"
-        />
+        <DatePicker locale={locale} picker="month" />
       </div>
       <button className="bg-sky-500 text-white px-4 py-2 rounded hover:bg-sky-600">
         Xuất file

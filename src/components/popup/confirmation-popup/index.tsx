@@ -1,15 +1,16 @@
-import React from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import { Button } from "antd";
 import Popup from "..";
 
 interface Props {
   title: string;
   name: string;
+  setShowPopup: Dispatch<SetStateAction<boolean>>;
 }
 
-const ConfirmationPopup: React.FC<Props> = ({ title, name }) => {
+const ConfirmationPopup: React.FC<Props> = ({ title, name, setShowPopup }) => {
   return (
-    <Popup title={title}>
+    <Popup title={title} setShowPopup={setShowPopup}>
       <div className="py-4 px-10">
         <div className="font-bold">
           Bạn chắc chắn muốn {title.toLowerCase()}{" "}
@@ -19,7 +20,11 @@ const ConfirmationPopup: React.FC<Props> = ({ title, name }) => {
           <Button type="primary" htmlType="button">
             Xác nhận
           </Button>
-          <Button htmlType="button" className="text-red-500 border-red-500">
+          <Button
+            onClick={() => setShowPopup(false)}
+            htmlType="button"
+            className="text-red-500 border-red-500"
+          >
             Hủy bỏ
           </Button>
         </div>

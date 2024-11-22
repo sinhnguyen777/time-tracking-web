@@ -1,10 +1,30 @@
-import { useState } from "react";
+import { useState, useEffect, Dispatch, SetStateAction } from "react";
 import CalendarCell from "./calendar-cell";
+import dayjs, { Dayjs } from "dayjs";
 
-const CustomCalendar = () => {
-  const currentDate = new Date();
-  const [currentMonth, setCurrentMonth] = useState(currentDate.getMonth());
-  const [currentYear, setCurrentYear] = useState(currentDate.getFullYear());
+interface Props {
+  selectedMonth: Dayjs;
+  setCalendarMonth: Dispatch<SetStateAction<Dayjs>>;
+}
+
+const CustomCalendar: React.FC<Props> = ({
+  selectedMonth,
+  setCalendarMonth
+}) => {
+  const currentDate = selectedMonth;
+  const [currentMonth, setCurrentMonth] = useState<number>(currentDate.month());
+  const [currentYear, setCurrentYear] = useState<number>(currentDate.year());
+
+  useEffect(() => {
+    setCalendarMonth(
+      dayjs(`${currentYear}-${String(currentMonth + 1).padStart(2, "0")}`)
+    );
+  }, [currentMonth, currentYear]);
+
+  useEffect(() => {
+    setCurrentMonth(currentDate.month());
+    setCurrentYear(currentDate.year());
+  }, [selectedMonth]);
 
   const getMonthData = (year: number, month: number) => {
     const daysInMonth = new Date(year, month + 1, 0).getDate();
@@ -104,7 +124,9 @@ const CustomCalendar = () => {
               </i>
             </button>
           </div>
-          <div className="text-sm">{`${firstDayOfMonth}/${currentMonth + 1}/${currentYear} - ${lastDayOfMonth}/${currentMonth + 1}/${currentYear}`}</div>
+          <div className="text-sm">
+            {`${String(firstDayOfMonth).padStart(2, "0")}/${String(currentMonth + 1).padStart(2, "0")}/${currentYear} - ${String(lastDayOfMonth).padStart(2, "0")}/${String(currentMonth + 1).padStart(2, "0")}/${currentYear}`}
+          </div>
         </div>
         <div className="overflow-auto">
           <div>

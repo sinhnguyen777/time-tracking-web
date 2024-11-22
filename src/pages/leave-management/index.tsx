@@ -1,12 +1,24 @@
+import { useState } from "react";
 import Layout from "@/components/layout";
 import Menu from "@/components/layout/menu";
 import LeaveTable from "@/components/table/leave-table";
 import { sampleData } from "@/components/table/leave-data";
+import CreateRequestPopup from "@/components/popup/create-request-popup";
 
 const Test = () => {
+  const [showPopup, setShowPopup] = useState(false);
+
   return (
     <Layout>
       <Menu title="Quản lý đơn từ" />
+      {showPopup && (
+        <CreateRequestPopup
+          title="Tạo mới đơn từ"
+          data={{}}
+          setShowPopup={setShowPopup}
+          isFormEditable={false}
+        />
+      )}
       <div>
         <div className="flex justify-center items-center">
           <div className="flex flex-1 mr-10 border">
@@ -37,6 +49,7 @@ const Test = () => {
           <div className="font-bold">
             <button
               type="button"
+              onClick={() => setShowPopup(true)}
               className="flex bg-sky-500 text-white rounded-md px-4 py-2"
             >
               <i className="mr-1">

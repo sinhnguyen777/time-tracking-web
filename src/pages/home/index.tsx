@@ -1,41 +1,29 @@
-import { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Layout from "@/components/layout";
 import Menu from "@/components/layout/menu";
-import axiosInterceptorInstance from "@/axios/axiosInterceptorInstance";
-// import Calendar from "@/components/calendar";
 import CustomCalendar from "@/components/custom-calendar";
 import TimeKeepingPopup from "@/components/popup/timekeeping-popup";
-import { Button } from "antd";
-// import AccountPopup from "@/components/popup/account-popup";
-// import ConfirmationPopup from "@/components/popup/confirmation-popup";
-// import CreateRequestPopup from "@/components/popup/create-request-popup";
-// import TimeKeepingDetailsPopup from "@/components/popup/timekeeping-details-popup";
+import { Button, DatePicker } from "antd";
+import locale from "antd/es/date-picker/locale/vi_VN";
+import dayjs, { Dayjs } from "dayjs";
+import "dayjs/locale/vi";
+dayjs.locale("vi");
 // import BarChart from "@/components/chart";
 
 const Test = () => {
   const [showPopup, setShowPopup] = useState(false);
+  const [CalendarMonth, setCalendarMonth] = useState<Dayjs>(dayjs());
 
-  const getData = async () => {
-    try {
-      const response = await axiosInterceptorInstance.get("/users"); // Replace with your API endpoint
-      // Handle the response data here
-      console.log(response.data);
-    } catch (error) {
-      // Handle the error here
-      console.error(error);
-    }
+  const onSelectMonth = (date: Dayjs) => {
+    setCalendarMonth(date);
   };
-
-  useEffect(() => {
-    getData();
-  }, []);
 
   return (
     <Layout>
       <div className="flex flex-col h-full">
         <Menu title="Tổng quan" />
         <div className="flex justify-center items-center mb-4">
-          <div className="flex flex-1 mr-10 border">
+          <div className="flex flex-1 border mr-4">
             <div className="flex-1">
               <input
                 type="text"
@@ -60,6 +48,16 @@ const Test = () => {
               </svg>
             </button>
           </div>
+          <div className="mr-4">
+            <DatePicker
+              picker="month"
+              value={CalendarMonth}
+              defaultValue={CalendarMonth}
+              locale={locale}
+              onChange={onSelectMonth}
+              allowClear={false}
+            />
+          </div>
           <div>
             <Button
               type="primary"
@@ -71,11 +69,12 @@ const Test = () => {
             </Button>
           </div>
         </div>
-        {/* <Calendar /> */}
-        <CustomCalendar />
+        <CustomCalendar
+          selectedMonth={CalendarMonth}
+          setCalendarMonth={setCalendarMonth}
+        />
         {/* <TimeKeepingDetailsPopup title="Chi tiết chấm công" /> */}
         {/* <ConfirmationPopup title="Xóa tài khoản" name="đạt" /> */}
-        {/* <AccountPopup title="Tạo mới tài khoản" /> */}
         {/* <CreateRequestPopup title="Tạo mới đơn từ" isFormEditable={false} /> */}
         {/* <CreateRequestPopup title="Chi tiết đơn từ" isFormEditable={true} /> */}
         {showPopup && (

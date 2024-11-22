@@ -1,7 +1,8 @@
 import { useState } from "react";
-import axiosInterceptorInstance from "@/axios/axiosInterceptorInstance";
+import HandleLogin from "@/services/handle-login";
 import Logo from "@/assets/images/favicon.png";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 interface UserCredentials {
   email: string;
@@ -9,24 +10,13 @@ interface UserCredentials {
 }
 
 const Login = () => {
+  const router = useRouter();
   const [credentials, setCredentials] = useState<UserCredentials>({
     email: "",
     password: ""
   });
   const [showPassword, setShowPassword] = useState(false);
   const [passwordInputType, setPasswordInputType] = useState("password");
-
-  const HandleLogin = async () => {
-    try {
-      const response = await axiosInterceptorInstance
-        .post("/auth/login", credentials)
-        .then((res) => res.data);
-      localStorage.setItem("token", JSON.stringify(response.accessToken));
-      console.log(response);
-    } catch (error) {
-      console.error(error);
-    }
-  };
 
   const ToggleShowPassword = () => {
     if (passwordInputType === "password") {
@@ -50,7 +40,7 @@ const Login = () => {
           className="[&>div]:my-6"
           onSubmit={(e) => {
             e.preventDefault();
-            HandleLogin();
+            HandleLogin(credentials, router);
           }}
         >
           <div className="relative">
