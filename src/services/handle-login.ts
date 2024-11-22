@@ -10,9 +10,13 @@ const HandleLogin = async (credentials: object, router: any) => {
           alert(error.response.data.message);
         }
       });
-    localStorage.setItem("token", JSON.stringify(response.accessToken));
-    HandleGetUserInfo();
-    router.push("/home");
+    if (response) {
+      localStorage.setItem("token", JSON.stringify(response.accessToken));
+      await HandleGetUserInfo();
+      router.replace("/home").then(() => {
+        window.location.reload();
+      });
+    }
   } catch (error) {
     console.error(error);
   }
@@ -23,7 +27,9 @@ const HandleGetUserInfo = async () => {
     const response = await axiosInterceptorInstance
       .get("users/user-info")
       .then((res) => res.data);
-    localStorage.setItem("user-info", JSON.stringify(response.data));
+    if (response) {
+      localStorage.setItem("user-info", JSON.stringify(response.data));
+    }
   } catch (error) {
     console.log(error);
   }

@@ -1,6 +1,7 @@
 import { useState, useEffect, Dispatch, SetStateAction } from "react";
 import CalendarCell from "./calendar-cell";
 import dayjs, { Dayjs } from "dayjs";
+import axiosInterceptorInstance from "@/axios/axiosInterceptorInstance";
 
 interface Props {
   selectedMonth: Dayjs;
@@ -14,6 +15,25 @@ const CustomCalendar: React.FC<Props> = ({
   const currentDate = selectedMonth;
   const [currentMonth, setCurrentMonth] = useState<number>(currentDate.month());
   const [currentYear, setCurrentYear] = useState<number>(currentDate.year());
+  const [userTimeKeeping, setUserTimeKeeping] = useState([]);
+
+  const HandleGetUserTimeKeeping = async () => {
+    const user_id = JSON.parse(localStorage.getItem("user-info") || "{}").id;
+    try {
+      const response = await axiosInterceptorInstance
+        .get(
+          `/timekeeping/monthly-report/${user_id}?month=${currentMonth + 1}&year=${currentYear}`
+        )
+        .then((res) => res.data);
+      setUserTimeKeeping(response.data.records);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    HandleGetUserTimeKeeping();
+  }, [currentMonth, currentYear]);
 
   useEffect(() => {
     setCalendarMonth(
@@ -141,20 +161,45 @@ const CustomCalendar: React.FC<Props> = ({
             </div>
             <div className="flex flex-wrap w-[1500px]">
               {monthData.map((week) =>
-                week.map((day, index) =>
-                  day ? (
-                    <CalendarCell
-                      key={index}
-                      dayInMonth={day}
-                      month={currentMonth + 1}
-                    />
-                  ) : (
-                    <div
-                      className="w-[calc(100%/7)] py-6 border relative rounded bg-sky-100"
-                      key={index}
-                    ></div>
-                  )
-                )
+                week.map((day, index) => {
+                  if (day) {
+                    let late_time = 0;
+                    let status = "";
+                    let time_check_in = "";
+                    let time_check_out = "";
+                    userTimeKeeping.map((info) => {
+                      const date = dayjs(info["date"]).date();
+                      if (date === day) {
+                        late_time = info["late_minutes"];
+                        status = info["status"];
+                        time_check_in = dayjs(info["time_check_in"]).format(
+                          "HH:mm"
+                        );
+                        time_check_out = dayjs(info["time_check_out"]).format(
+                          "HH:mm"
+                        );
+                      }
+                    });
+                    return (
+                      <CalendarCell
+                        lateTime={late_time}
+                        status={status}
+                        key={index}
+                        dayInMonth={day}
+                        checkInAt={time_check_in}
+                        checkOutAt={time_check_out}
+                        month={currentMonth + 1}
+                      />
+                    );
+                  } else {
+                    return (
+                      <div
+                        className="w-[calc(100%/7)] py-6 border relative rounded bg-sky-100"
+                        key={index}
+                      ></div>
+                    );
+                  }
+                })
               )}
             </div>
           </div>
