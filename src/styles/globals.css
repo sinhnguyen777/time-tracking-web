@@ -2,20 +2,58 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
-  color: var(--foreground);
-  background: var(--background);
+  color: #333;
+  background: #fff;
   font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer components {
+  .calendar-cell-late {
+    @apply border-orange-400
+  }
+
+  .calendar-cell-late>.calendar-cell-title {
+    @apply bg-orange-400 text-white
+  }
+
+  .calendar-cell-late>.calendar-cell-body {
+    @apply bg-orange-50
+  }
+
+  .calendar-cell-late>.calendar-cell-body>* {
+    @apply border-orange-400
+  }
+
+  .calendar-cell-working {
+    @apply border-green-400
+  }
+
+  .calendar-cell-working>.calendar-cell-title {
+    @apply bg-green-400 text-white
+  }
+
+  .calendar-cell-working>.calendar-cell-body {
+    @apply bg-green-50
+  }
+
+  .calendar-cell-working>.calendar-cell-body>* {
+    @apply border-green-400
+  }
+
+  .calendar-cell-absent {
+    @apply border-red-400
+  }
+
+  .calendar-cell-absent>.calendar-cell-title {
+    @apply bg-red-400 text-white
+  }
+
+  .calendar-cell-absent>.calendar-cell-body {
+    @apply bg-red-50
+  }
+
+  .calendar-cell-absent>.calendar-cell-body>* {
+    @apply border-red-400
+  }
 }
