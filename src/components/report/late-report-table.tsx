@@ -1,6 +1,8 @@
+import map from "lodash/map";
 import React from "react";
 
-const LateReportTable: React.FC<{ data: any[] }> = ({ data }) => {
+const LateReportTable: React.FC<{ data: any }> = ({ data }) => {
+  const { user } = data;
   return (
     <div className="overflow-x-auto">
       <table className="min-w-full border-collapse border border-gray-300 text-sm">
@@ -16,25 +18,29 @@ const LateReportTable: React.FC<{ data: any[] }> = ({ data }) => {
             <th className="border border-gray-300 px-4 py-2">
               Thời gian đi muộn (phút)
             </th>
-            <th className="border border-gray-300 px-4 py-2">Phép</th>
-            <th className="border border-gray-300 px-4 py-2">Phạt</th>
+            {/* <th className="border border-gray-300 px-4 py-2">Phép</th>
+            <th className="border border-gray-300 px-4 py-2">Phạt</th> */}
           </tr>
         </thead>
         <tbody>
-          {data.map((row, index) => (
+          {map(data.lateDays, (row, index) => (
             <tr key={index}>
-              <td className="border border-gray-300 px-4 py-2">{row.maNV}</td>
-              <td className="border border-gray-300 px-4 py-2">{row.hoTen}</td>
-              <td className="border border-gray-300 px-4 py-2">{row.viTri}</td>
+              <td className="border border-gray-300 px-4 py-2">{user.code}</td>
               <td className="border border-gray-300 px-4 py-2">
-                {row.gioCheckinOut}
+                {user.full_name}
               </td>
-              <td className="border border-gray-300 px-4 py-2">{row.ngay}</td>
               <td className="border border-gray-300 px-4 py-2">
-                {row.thoiGianDiMuon}
+                {user.position}
               </td>
-              <td className="border border-gray-300 px-4 py-2">{row.phep}</td>
-              <td className="border border-gray-300 px-4 py-2">{row.phat}</td>
+              <td className="border border-gray-300 px-4 py-2">
+                {row.time_check_in} - {row.time_check_out}
+              </td>
+              <td className="border border-gray-300 px-4 py-2">{row.date}</td>
+              <td className="border border-gray-300 px-4 py-2">
+                {row.late_minutes}
+              </td>
+              {/* <td className="border border-gray-300 px-4 py-2">{row.phep}</td>
+                <td className="border border-gray-300 px-4 py-2">{row.phat}</td> */}
             </tr>
           ))}
         </tbody>

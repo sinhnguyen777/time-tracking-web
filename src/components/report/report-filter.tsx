@@ -1,8 +1,7 @@
-import React from "react";
-import { Select, DatePicker } from "antd";
-import locale from "antd/es/date-picker/locale/vi_VN";
+import { Select } from "antd";
 import dayjs from "dayjs";
 import "dayjs/locale/vi";
+import React from "react";
 dayjs.locale("vi");
 
 interface ReportFiltersProps {
@@ -23,23 +22,23 @@ const ReportFilters: React.FC<ReportFiltersProps> = ({
           options={[
             {
               value: "late",
-              label: "Báo cáo đi muộn"
+              label: "Báo cáo đi trễ"
             },
             {
-              value: "overtime",
-              label: "Báo cáo tăng ca"
+              value: "absent",
+              label: "Báo cáo ngày nghỉ"
             },
-            {
-              value: "attendance",
-              label: "Chi tiết chấm công"
-            },
+            // {
+            //   value: "attendance",
+            //   label: "Chi tiết chấm công"
+            // },
             {
               value: "totalWork",
               label: "Báo cáo tổng số công"
             }
           ]}
         />
-        <DatePicker locale={locale} picker="month" />
+        {/* <DatePicker locale={locale} picker="month" /> */}
       </div>
       <button className="bg-sky-500 text-white px-4 py-2 rounded hover:bg-sky-600">
         Xuất file
