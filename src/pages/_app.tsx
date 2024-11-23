@@ -24,7 +24,7 @@ export default function App({ Component, pageProps }: AppProps) {
     } else {
       router.push("/login");
     }
-  }, [router]);
+  }, [router.pathname]);
 
   return <Component {...pageProps} />;
 }

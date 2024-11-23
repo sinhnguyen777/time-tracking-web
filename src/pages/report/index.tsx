@@ -105,6 +105,7 @@ const ReportPage: React.FC = () => {
       exportToExcel(dataToExport, reportName);
     } else {
       console.error("Không có dữ liệu để xuất");
+      alert("Không có bảng dữ liệu để xuất");
     }
   };
 
@@ -153,6 +154,9 @@ const ReportPage: React.FC = () => {
         <AttendanceDetailTable data={attendanceDetailData} />
       )} */}
       {selectedReport === "totalWork" && <TotalWorkReport data={dataReport} />}
+      <br />
+      <br />
+      <br />
     </Layout>
   );
 };
