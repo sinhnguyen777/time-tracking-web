@@ -22,16 +22,16 @@ const ReportFilters: React.FC<ReportFiltersProps> = ({
           options={[
             {
               value: "late",
-              label: "Báo cáo đi muộn"
+              label: "Báo cáo đi trễ"
             },
             {
-              value: "overtime",
-              label: "Báo cáo tăng ca"
+              value: "absent",
+              label: "Báo cáo ngày nghỉ"
             },
-            {
-              value: "attendance",
-              label: "Chi tiết chấm công"
-            },
+            // {
+            //   value: "attendance",
+            //   label: "Chi tiết chấm công"
+            // },
             {
               value: "totalWork",
               label: "Báo cáo tổng số công"
