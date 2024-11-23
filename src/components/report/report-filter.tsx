@@ -7,11 +7,13 @@ dayjs.locale("vi");
 interface ReportFiltersProps {
   selectedReport: string;
   onReportChange: (report: string) => void;
+  onExport: () => void; // Thêm prop onExport để nhận hàm xuất file từ component cha
 }
 
 const ReportFilters: React.FC<ReportFiltersProps> = ({
   selectedReport,
-  onReportChange
+  onReportChange,
+  onExport
 }) => {
   return (
     <div className="flex items-center justify-between mb-4">
@@ -40,7 +42,10 @@ const ReportFilters: React.FC<ReportFiltersProps> = ({
         />
         {/* <DatePicker locale={locale} picker="month" /> */}
       </div>
-      <button className="bg-sky-500 text-white px-4 py-2 rounded hover:bg-sky-600">
+      <button
+        onClick={onExport}
+        className="bg-sky-500 text-white px-4 py-2 rounded hover:bg-sky-600"
+      >
         Xuất file
       </button>
     </div>

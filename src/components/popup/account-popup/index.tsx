@@ -106,7 +106,7 @@ const AccountPopup: React.FC<Props> = ({ title, setShowPopup, data }) => {
             >
               <Input placeholder="Nhập Email" />
             </Form.Item>
-            <Form.Item
+            {/* <Form.Item
               name="password"
               label="Password"
               rules={[
@@ -127,10 +127,10 @@ const AccountPopup: React.FC<Props> = ({ title, setShowPopup, data }) => {
               ]}
             >
               <Password placeholder="Nhập lại Password" />
-            </Form.Item>
+            </Form.Item> */}
           </div>
           <Form.Item {...tailLayout}>
-            <Space className="justify-center w-full">
+            {/* <Space className="justify-center w-full">
               <Button type="primary" htmlType="submit">
                 Lưu
               </Button>
@@ -144,7 +144,7 @@ const AccountPopup: React.FC<Props> = ({ title, setShowPopup, data }) => {
               <Button htmlType="button" onClick={onReset}>
                 Reset thông tin
               </Button>
-            </Space>
+            </Space> */}
           </Form.Item>
         </Form>
       </div>
