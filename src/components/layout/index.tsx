@@ -16,8 +16,8 @@ const Layout: React.FC<Props> = ({ children }) => {
   return (
     <div className="flex">
       <div className="bg-sky-600 w-1/5 text-white h-lvh [&_i]:mr-3">
-        <div className="flex p-4 [&>*]:cursor-pointer">
-          <Image src={"/logo_full_white.png"} alt="" width={150} height={50} />
+        <div className="flex p-4 [&>*]:cursor-pointer justify-center">
+          <Image src={"/logo_full_white.png"} alt="" width={200} height={50} />
         </div>
         <ul>
           {IconList.map((item, index) => {
