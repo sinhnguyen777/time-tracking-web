@@ -10,7 +10,6 @@ import dayjs from "dayjs";
 import { utils, writeFile } from "xlsx";
 import AbsentReportTable from "@/components/report/absent-report-table";
 import { map } from "lodash";
-import BarChart from "@/components/chart";
 
 const ReportPage: React.FC = () => {
   const [selectedReport, setSelectedReport] = useState("totalWork");
@@ -158,8 +157,6 @@ const ReportPage: React.FC = () => {
       <br />
       <br />
       <br />
-
-      {/* <BarChart /> */}
     </Layout>
   );
 };
