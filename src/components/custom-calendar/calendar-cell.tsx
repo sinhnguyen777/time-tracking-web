@@ -27,6 +27,7 @@ const CalendarCell: React.FC<Props> = ({
     checkout: checkOutAt,
     date: date
   };
+
   return (
     <>
       {showPopup && (
@@ -54,7 +55,7 @@ const CalendarCell: React.FC<Props> = ({
         </div>
         <div className="grid grid-cols-2 calendar-cell-body h-36">
           <div className="col-start-1 font-bold text-lg border-b flex justify-center items-center py-4 px-2">
-            1
+            {status === "late" || status === "working" ? 1 : 0}
           </div>
           <div className="col-start-1 py-4 px-2 flex justify-center items-center text-center">
             {status === "absent"
