@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import dayjs from "dayjs";
 import AccountPopup from "@/components/popup/account-popup";
+import { EyeOutlined } from "@ant-design/icons";
 
 interface UserInterface {
   code: string;
@@ -38,7 +39,7 @@ const UserTable: React.FC<Props> = ({ data }) => {
           {showPopup && (
             <AccountPopup
               data={data[currentPopupId]}
-              title="Chỉnh sửa tài khoản"
+              title="Thông tin nhân viên"
               setShowPopup={setShowPopup}
             />
           )}
@@ -65,11 +66,11 @@ const UserTable: React.FC<Props> = ({ data }) => {
                   }}
                   className="text-blue-500 hover:underline mx-2"
                 >
-                  ✏️
+                  <EyeOutlined />
                 </button>
-                <button className="text-red-500 hover:underline mx-2">
+                {/* <button className="text-red-500 hover:underline mx-2">
                   🗑️
-                </button>
+                </button> */}
               </td>
             </tr>
           ))}
