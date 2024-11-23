@@ -10,6 +10,8 @@ import dayjs from "dayjs";
 import { utils, writeFile } from "xlsx";
 import AbsentReportTable from "@/components/report/absent-report-table";
 import { map } from "lodash";
+import BarChart from "@/components/chart";
+import { Typography } from "antd";
 
 const ReportPage: React.FC = () => {
   const [selectedReport, setSelectedReport] = useState("totalWork");
@@ -148,15 +150,33 @@ const ReportPage: React.FC = () => {
         onReportChange={setSelectedReport}
         onExport={handleExportToExcel}
       />
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          marginBottom: "20px"
+        }}
+      >
+        <div>
+          {selectedReport === "totalWork" && (
+            <div style={{ margin: "20px" }}>
+              <Typography.Title level={4}>
+                Báo cáo tổng số công tháng {dayjs().month() + 1}
+              </Typography.Title>
+            </div>
+          )}
+          {selectedReport === "totalWork" && (
+            <TotalWorkReport data={dataReport} />
+          )}
+        </div>
+
+        <div style={{ width: "65%" }}>
+          <BarChart />
+        </div>
+      </div>
       {selectedReport === "late" && <LateReportTable data={lateData} />}
       {selectedReport === "absent" && <AbsentReportTable data={absentData} />}
-      {/* {selectedReport === "attendance" && (
-        <AttendanceDetailTable data={attendanceDetailData} />
-      )} */}
-      {selectedReport === "totalWork" && <TotalWorkReport data={dataReport} />}
-      <br />
-      <br />
-      <br />
     </Layout>
   );
 };

@@ -1,5 +1,3 @@
-import { Typography } from "antd";
-import dayjs from "dayjs";
 import React from "react";
 
 interface TotalWorkReportProps {
@@ -9,11 +7,6 @@ interface TotalWorkReportProps {
 const TotalWorkReport: React.FC<TotalWorkReportProps> = ({ data }) => {
   return (
     <>
-      <div style={{ margin: "20px" }}>
-        <Typography.Title level={4}>
-          Báo cáo tổng số công tháng {dayjs().month() + 1}
-        </Typography.Title>
-      </div>
       <div style={{ margin: "20px", fontSize: "16px", lineHeight: "24px" }}>
         <p>
           <strong>Mã NV:</strong> {data.user_code}
