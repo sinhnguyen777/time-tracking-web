@@ -150,31 +150,16 @@ const ReportPage: React.FC = () => {
         onReportChange={setSelectedReport}
         onExport={handleExportToExcel}
       />
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          marginBottom: "20px"
-        }}
-      >
-        <div>
-          {selectedReport === "totalWork" && (
-            <div style={{ margin: "20px" }}>
-              <Typography.Title level={4}>
-                Báo cáo tổng số công tháng {dayjs().month() + 1}
-              </Typography.Title>
-            </div>
-          )}
-          {selectedReport === "totalWork" && (
-            <TotalWorkReport data={dataReport} />
-          )}
-        </div>
 
-        <div style={{ width: "65%" }}>
-          <BarChart />
+      {selectedReport === "totalWork" && (
+        <div style={{ margin: "20px" }}>
+          <Typography.Title level={4}>
+            Báo cáo tổng số công tháng {dayjs().month() + 1}
+          </Typography.Title>
         </div>
-      </div>
+      )}
+      {selectedReport === "totalWork" && <TotalWorkReport data={dataReport} />}
+
       {selectedReport === "late" && <LateReportTable data={lateData} />}
       {selectedReport === "absent" && <AbsentReportTable data={absentData} />}
     </Layout>
